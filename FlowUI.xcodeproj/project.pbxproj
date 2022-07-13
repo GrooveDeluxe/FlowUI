@@ -30,7 +30,7 @@
 		4244D3662843A49000FC0BD8 /* UIView+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D34E2843A49000FC0BD8 /* UIView+Constants.swift */; };
 		4244D3672843A49000FC0BD8 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D34F2843A49000FC0BD8 /* UIView+Shadow.swift */; };
 		4244D3682843A49000FC0BD8 /* UIViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3502843A49000FC0BD8 /* UIViewBuilder.swift */; };
-		4244D3692843A49000FC0BD8 /* Attributable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3522843A49000FC0BD8 /* Attributable.swift */; };
+		4244D3692843A49000FC0BD8 /* AttributedStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3522843A49000FC0BD8 /* AttributedStringConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +58,7 @@
 		4244D34E2843A49000FC0BD8 /* UIView+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constants.swift"; sourceTree = "<group>"; };
 		4244D34F2843A49000FC0BD8 /* UIView+Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		4244D3502843A49000FC0BD8 /* UIViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewBuilder.swift; sourceTree = "<group>"; };
-		4244D3522843A49000FC0BD8 /* Attributable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attributable.swift; sourceTree = "<group>"; };
+		4244D3522843A49000FC0BD8 /* AttributedStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringConvertible.swift; sourceTree = "<group>"; };
 		4244D37E2843FDB400FC0BD8 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4244D37F2843FDB400FC0BD8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4244D3802843FDB400FC0BD8 /* FlowUI.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = FlowUI.podspec; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 			children = (
 				4244D2E22842773C00FC0BD8 /* FlowUI.h */,
 				4244D32D2843A49000FC0BD8 /* AssociatedStore */,
-				4244D3512843A49000FC0BD8 /* Attributable */,
+				4244D3512843A49000FC0BD8 /* AttributedStrings */,
 				4244D32F2843A49000FC0BD8 /* CG+Convenience */,
 				4244D3312843A49000FC0BD8 /* Extensions */,
 				4244D3332843A49000FC0BD8 /* UI+Convenience */,
@@ -235,12 +235,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		4244D3512843A49000FC0BD8 /* Attributable */ = {
+		4244D3512843A49000FC0BD8 /* AttributedStrings */ = {
 			isa = PBXGroup;
 			children = (
-				4244D3522843A49000FC0BD8 /* Attributable.swift */,
+				4244D3522843A49000FC0BD8 /* AttributedStringConvertible.swift */,
 			);
-			path = Attributable;
+			path = AttributedStrings;
 			sourceTree = "<group>";
 		};
 		4244D37D2843FD9700FC0BD8 /* Metadata */ = {
@@ -342,7 +342,7 @@
 				4244D3642843A49000FC0BD8 /* UIVIew+Border.swift in Sources */,
 				4244D3672843A49000FC0BD8 /* UIView+Shadow.swift in Sources */,
 				4244D3652843A49000FC0BD8 /* UIView+Convenience.swift in Sources */,
-				4244D3692843A49000FC0BD8 /* Attributable.swift in Sources */,
+				4244D3692843A49000FC0BD8 /* AttributedStringConvertible.swift in Sources */,
 				4244D3632843A49000FC0BD8 /* UIView+Triangle.swift in Sources */,
 				4244D3542843A49000FC0BD8 /* CGSize+Convenience.swift in Sources */,
 				4244D35F2843A49000FC0BD8 /* UIButton+Convenience.swift in Sources */,
