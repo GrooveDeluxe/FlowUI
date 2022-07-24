@@ -38,23 +38,43 @@ public extension UILabel {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    convenience init(attributedText: NSAttributedString? = nil,
+                     textAlignment: NSTextAlignment = .left,
+                     numberOfLines: Int = 0) {
+        self.init()
+        self.attributedText = attributedText
+        self.textAlignment = textAlignment
+        self.numberOfLines = numberOfLines
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+
     @discardableResult
     func text(_ text: String?) -> UILabel {
-        if attributedText != nil {
-            guard let text = text else {
-                self.attributedText = nil
-                return self
-            }
-            self.attributedText = NSAttributedString(string: text)
-        } else {
-            self.text = text
-        }
+        self.text = text
         return self
     }
 
     @discardableResult
-    func attributedText(_ attributedText: NSAttributedString) -> UILabel {
-        self.attributedText = attributedText
+    func font(_ font: UIFont) -> Self {
+        self.font = font
+        return self
+    }
+
+    @discardableResult
+    func textColor(_ textColor: UIColor) -> Self {
+        self.textColor = textColor
+        return self
+    }
+
+    @discardableResult
+    func shadowColor(_ shadowColor: UIColor) -> Self {
+        self.shadowColor = shadowColor
+        return self
+    }
+
+    @discardableResult
+    func shadowOffset(_ shadowOffset: CGSize) -> Self {
+        self.shadowOffset = shadowOffset
         return self
     }
 
@@ -65,78 +85,87 @@ public extension UILabel {
     }
 
     @discardableResult
+    func lineBreakMode(_ lineBreakMode: NSLineBreakMode) -> Self {
+        self.lineBreakMode = lineBreakMode
+        return self
+    }
+
+    @discardableResult
+    func attributedText(_ attributedText: NSAttributedString) -> Self {
+        self.attributedText = attributedText
+        return self
+    }
+
+    @discardableResult
+    func highlightedTextColor(_ highlightedTextColor: UIColor) -> Self {
+        self.highlightedTextColor = highlightedTextColor
+        return self
+    }
+
+    @discardableResult
+    func isHighlighted(_ isHighlighted: Bool) -> Self {
+        self.isHighlighted = isHighlighted
+        return self
+    }
+
+    @discardableResult
+    func isEnabled(_ isEnabled: Bool) -> Self {
+        self.isEnabled = isEnabled
+        return self
+    }
+
+    @discardableResult
+    func numberOfLines(_ numberOfLines: Int) -> Self {
+        self.numberOfLines = numberOfLines
+        return self
+    }
+
+    @discardableResult
+    func adjustsFontSizeToFitWidth(_ adjustsFontSizeToFitWidth: Bool) -> Self {
+        self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
+        return self
+    }
+
+    @discardableResult
+    func baselineAdjustment(_ baselineAdjustment: UIBaselineAdjustment) -> Self {
+        self.baselineAdjustment = baselineAdjustment
+        return self
+    }
+
+    @discardableResult
+    func minimumScaleFactor(_ minimumScaleFactor: CGFloat) -> Self {
+        self.minimumScaleFactor = minimumScaleFactor
+        return self
+    }
+
+    @discardableResult
+    func allowsDefaultTighteningForTruncation(_ allowsDefaultTighteningForTruncation: Bool) -> Self {
+        self.allowsDefaultTighteningForTruncation = allowsDefaultTighteningForTruncation
+        return self
+    }
+
+    @discardableResult
+    func lineBreakStrategy(_ lineBreakStrategy: NSParagraphStyle.LineBreakStrategy) -> Self {
+        self.lineBreakStrategy = lineBreakStrategy
+        return self
+    }
+
+    @discardableResult
+    func preferredMaxLayoutWidth(_ preferredMaxLayoutWidth: CGFloat) -> Self {
+        self.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+        return self
+    }
+
+
+    @discardableResult
+    func showsExpansionTextWhenTruncated(_ showsExpansionTextWhenTruncated: Bool) -> Self {
+        self.showsExpansionTextWhenTruncated = showsExpansionTextWhenTruncated
+        return self
+    }
+
+    @discardableResult
     func hideIfTextNilOrEmpty() -> Self {
         isHidden = (text ?? attributedText?.string)?.isEmpty ?? true
         return self
-    }
-    
-    @discardableResult
-    func adjustsFontSizeToFitWidth(_ needAdjusts: Bool) -> Self {
-        adjustsFontSizeToFitWidth = needAdjusts
-        return self
-    }
-
-    @discardableResult
-    func apply(_ attributes: Attribute...) -> UILabel {
-        var attributesAccum: Attributes = [:]
-        attributes.forEach { attribute in
-            switch attribute {
-            case let .zeplin(lineHeight: lineHeight):
-                attributesAccum += zeplinAttributes(lineHeight: lineHeight)
-            default:
-                attributesAccum += attribute.attributes
-            }
-        }
-
-        guard let attributedString = attributedText?.mutableAttributed ?? text?.mutableAttributed else { return self }
-
-        let range = NSRange(location: 0, length: attributedString.length)
-        attributedString.addAttributes(attributesAccum, range: range)
-
-        attributedText = attributedString
-
-        return self
-    }
-
-    private func zeplinAttributes(lineHeight: CGFloat) -> Attributes {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = lineHeight - font.lineHeight
-        paragraphStyle.lineHeightMultiple = lineHeight / font.lineHeight
-        paragraphStyle.lineBreakMode = lineBreakMode
-        paragraphStyle.alignment = textAlignment
-        return [.paragraphStyle: paragraphStyle]
-    }
-}
-
-public extension UILabel.Attribute {
-    var attributes: Attributes? {
-        switch self {
-        case .zeplin(lineHeight: _):
-            // Потому что для вычисения нужен font. Вынесено в UILabel в zeplinAttributes
-            return nil
-        case let .baselineOffset(offset):
-            return [.baselineOffset: offset]
-        case let .foregroundColor(color):
-            return [.foregroundColor: color]
-        case let .backgroundColor(color):
-            return [.backgroundColor: color]
-        case let .custom(attributes):
-            return attributes
-        }
-    }
-}
-
-public extension Attributes {
-    static func + (lhs: Attributes, rhs: Attributes?) -> Attributes {
-        var temp = lhs
-        rhs?.forEach {
-            temp[$0.key] = $0.value
-        }
-        return temp
-    }
-
-    static func += (lhs: inout Attributes, rhs: Attributes? = [:]) {
-        // swiftlint:disable:next shorthand_operator
-        lhs = lhs + rhs
     }
 }

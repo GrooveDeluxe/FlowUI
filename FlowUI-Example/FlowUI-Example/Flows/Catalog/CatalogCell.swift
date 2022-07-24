@@ -13,6 +13,7 @@ struct CatalogCellModel {
 final class CatalogCell: UITableViewCell {
 
     private lazy var titleLabel = label()
+        .font(.systemFont(ofSize: 24, weight: .bold))
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,7 +28,6 @@ final class CatalogCell: UITableViewCell {
     func configure(_ model: CatalogCellModel) {
         titleLabel
             .text(model.title)
-            .apply(.custom([.font: UIFont.systemFont(ofSize: 24, weight: .bold)]))
     }
 }
 

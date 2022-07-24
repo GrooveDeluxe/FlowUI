@@ -23,13 +23,12 @@ class MiscViewController: UIViewController {
 
     // UI components
 
-    private var centeredH1Label: UILabel { .h1.textAlignment(.center) }
+    private var centeredH1Label: UILabel { .h1.textAlignment(.center).textColor(.orange) }
 
     private lazy var stack = stack(.vertical) {
 
         centeredH1Label
             .text("Colors")
-            .apply(.foregroundColor(.orange), .custom([.kern: 20]))
 
         UIView(color: .lightGray, height: 1)
 
@@ -42,10 +41,10 @@ class MiscViewController: UIViewController {
         button(
             title: "Red button",
             style: .init(
-                textColor: .white,
-                font: .systemFont(ofSize: 17, weight: .bold),
-                backgroundColor: .red,
-                cornerRadius: 8
+                .font(.systemFont(ofSize: 17, weight: .bold)),
+                .foregroundColor(.white),
+                .backgroundColor(.red),
+                .cornerRadius(8)
             ),
             type: .system
         )
