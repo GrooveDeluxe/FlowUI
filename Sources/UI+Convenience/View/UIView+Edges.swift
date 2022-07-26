@@ -23,14 +23,14 @@ public extension UIView {
         case multiplier(CGFloat, edge: Self)
         case relation(Relation, edge: Self)
         
-        static let top = Self.top(0)
-        static var left = Self.left(0)
-        static var right = Self.right(0)
-        static var bottom  = Self.bottom(0)
-        static var centerX  = Self.centerX(0)
-        static var centerY  = Self.centerY(0)
+        public static let top = Self.top(0)
+        public static var left = Self.left(0)
+        public static var right = Self.right(0)
+        public static var bottom  = Self.bottom(0)
+        public static var centerX  = Self.centerX(0)
+        public static var centerY  = Self.centerY(0)
         
-        var value: CGFloat {
+        public var value: CGFloat {
             switch self {
             case .top(let value),
                  .left(let value),
