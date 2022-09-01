@@ -25,6 +25,22 @@ class MiscViewController: UIViewController {
 
     private var centeredH1Label: UILabel { .h1.textAlignment(.center).textColor(.orange) }
 
+    private let labelAttributedTitle = NSAttributedString(
+        string: "Label Attributed Title",
+        attributes: [
+            .font: UIFont.boldSystemFont(ofSize: 20),
+            .foregroundColor: UIColor.magenta
+        ]
+    )
+
+    private let buttonAttributedTitle = NSAttributedString(
+        string: "Button Attributed Title",
+        attributes: [
+            .font: UIFont.boldSystemFont(ofSize: 20),
+            .foregroundColor: UIColor.magenta
+        ]
+    )
+
     private lazy var stack = stack(.vertical) {
 
         centeredH1Label
@@ -50,7 +66,25 @@ class MiscViewController: UIViewController {
         )
         .size(height: 40)
         .addTouchUpInside {
-            print("Button tapped")
+            print("Red button tapped")
+        }
+
+        space(height: 32)
+
+        label(labelAttributedTitle)
+
+        space(height: 32)
+
+        button(
+            attributedTitle: buttonAttributedTitle,
+            style: .init(
+                .backgroundColor(.orange),
+                .cornerRadius(8)
+            )
+        )
+        .size(height: 40)
+        .addTouchUpInside {
+            print("Attributed button tapped")
         }
     }
 

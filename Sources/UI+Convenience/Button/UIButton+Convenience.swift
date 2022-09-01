@@ -5,8 +5,6 @@
 
 import UIKit
 
-
-
 public extension UIButton {
     struct Style {
         public enum Item {
@@ -27,6 +25,12 @@ public extension UIButton {
         self.init(type: type)
         translatesAutoresizingMaskIntoConstraints = false
         setTitle(title, for: .normal)
+    }
+
+    convenience init(attributedTitle: NSAttributedString?, type: UIButton.ButtonType = .custom) {
+        self.init(type: type)
+        translatesAutoresizingMaskIntoConstraints = false
+        setAttributedTitle(attributedTitle, for: .normal)
     }
 
     convenience init(image: UIImage?, type: UIButton.ButtonType = .custom) {

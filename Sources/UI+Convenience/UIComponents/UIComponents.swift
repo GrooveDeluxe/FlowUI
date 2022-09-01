@@ -45,8 +45,29 @@ public extension UIComponents {
         )
     }
 
-    func button(title: String = "", style: UIButton.Style? = nil, size: CGSize? = nil, type: UIButton.ButtonType = .custom) -> UIButton {
+    func label(_ attributedText: NSAttributedString? = nil,
+               textAlignment: NSTextAlignment = .left,
+               numberOfLines: Int = 0) -> UILabel {
+        UILabel(attributedText: attributedText, textAlignment: textAlignment, numberOfLines: numberOfLines)
+    }
+
+    func button(title: String = "",
+                style: UIButton.Style? = nil,
+                size: CGSize? = nil,
+                type: UIButton.ButtonType = .custom) -> UIButton {
         let button = UIButton(title: title, type: type)
+            .size(width: size?.width, height: size?.height)
+        if let style = style {
+            button.style(style)
+        }
+        return button
+    }
+
+    func button(attributedTitle: NSAttributedString? = nil,
+                style: UIButton.Style? = nil,
+                size: CGSize? = nil,
+                type: UIButton.ButtonType = .custom) -> UIButton {
+        let button = UIButton(attributedTitle: attributedTitle, type: type)
             .size(width: size?.width, height: size?.height)
         if let style = style {
             button.style(style)
