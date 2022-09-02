@@ -6,61 +6,91 @@
 import UIKit
 
 public extension UIView {
-    enum Relation {
-        case equal
-        case lessOrEqual
-        case greaterOrEqual
-    }
+    struct Edge {
+        public enum EdgeKind: Equatable {
+            case top
+            case left
+            case right
+            case bottom
+            case centerX
+            case centerY
 
-    indirect enum Edge: Equatable {
-        case top(CGFloat)
-        case left(CGFloat)
-        case right(CGFloat)
-        case bottom(CGFloat)
-        case centerX(CGFloat)
-        case centerY(CGFloat)
-        
-        case multiplier(CGFloat, edge: Self)
-        case relation(Relation, edge: Self)
-        
-        public static let top = Self.top(0)
-        public static var left = Self.left(0)
-        public static var right = Self.right(0)
-        public static var bottom  = Self.bottom(0)
-        public static var centerX  = Self.centerX(0)
-        public static var centerY  = Self.centerY(0)
-        
-        public var value: CGFloat {
-            switch self {
-            case .top(let value),
-                 .left(let value),
-                 .right(let value),
-                 .bottom(let value),
-                 .centerX(let value),
-                 .centerY(let value):
-                return value
-            default:
-                return 0.0
+            var attribute: NSLayoutConstraint.Attribute {
+                let map: [Self: NSLayoutConstraint.Attribute] = [
+                    .top: .top,
+                    .left: .left,
+                    .right: .right,
+                    .bottom: .bottom,
+                    .centerX: .centerX,
+                    .centerY: .centerY
+                ]
+                return map[self] ?? .notAnAttribute
             }
         }
-        /// Сравнивает типы Edge не учитывая ассоциированные значения.
-        func isEdge(_ edge: Edge) -> Bool {
-            switch self {
-            case .top(_):
-                return edge == .top
-            case .left(_):
-                return edge == .left
-            case .right(_):
-                return edge == .right
-            case .bottom(_):
-                return edge == .bottom
-            case .centerX(_):
-                return edge == .centerX
-            case .centerY(_):
-                return edge == .centerY
-            default:
-                return false
-            }
+
+        public let kind: EdgeKind
+        public let relation: NSLayoutConstraint.Relation
+        public let constant: CGFloat
+        public let priority: UILayoutPriority
+        public let layoutGuide: KeyPath<UIView, UILayoutGuide>?
+
+        private init(_ kind: EdgeKind,
+                     relation: NSLayoutConstraint.Relation = .equal,
+                     constant: CGFloat = 0.0,
+                     priority: UILayoutPriority = .required,
+                     layoutGuide: KeyPath<UIView, UILayoutGuide>? = nil) {
+            self.kind = kind
+            self.relation = relation
+            self.constant = (kind == .right || kind == .bottom) ? -constant : constant
+            self.priority = .required
+            self.layoutGuide = layoutGuide
+        }
+
+        public static let top = Edge(.top)
+        public static let left = Edge(.left)
+        public static let right = Edge(.right)
+        public static let bottom = Edge(.bottom)
+        public static let centerX = Edge(.centerX)
+        public static let centerY = Edge(.centerY)
+
+        public static func top(_ value: CGFloat) -> Edge {
+            Edge(.top, constant: value)
+        }
+
+        public static func left(_ value: CGFloat) -> Edge {
+            Edge(.left, constant: value)
+        }
+
+        public static func right(_ value: CGFloat) -> Edge {
+            Edge(.right, constant: value)
+        }
+
+        public static func bottom(_ value: CGFloat) -> Edge {
+            Edge(.bottom, constant: value)
+        }
+
+        public static func centerX(_ value: CGFloat) -> Edge {
+            Edge(.centerX, constant: value)
+        }
+
+        public static func centerY(_ value: CGFloat) -> Edge {
+            Edge(.centerY, constant: value)
+        }
+
+        public func relation(_ value: NSLayoutConstraint.Relation) -> Self {
+            Edge(kind, relation: value, constant: constant, priority: priority)
+        }
+
+        public func constant(_ value: CGFloat) -> Self {
+            Edge(kind, relation: relation, constant: value, priority: priority)
+        }
+
+        public func priority(_ value: UILayoutPriority) -> Self {
+            Edge(kind, relation: relation, constant: constant, priority: value)
+        }
+
+        public var safeArea: Self {
+            Edge(kind, relation: relation, constant: constant, priority: priority, layoutGuide: \.safeAreaLayoutGuide)
         }
     }
 
@@ -81,104 +111,28 @@ public extension UIView {
     }
 
     private func pinTo(_ view: UIView, edge: Edge) {
-        switch edge {
-        case .top(let constant):
-            topAnchor.constraint(equalTo: view.topAnchor, constant: constant).isActive = true
-        case .left(let constant):
-            leftAnchor.constraint(equalTo: view.leftAnchor, constant: constant).isActive = true
-        case .right(let constant):
-            rightAnchor.constraint(equalTo: view.rightAnchor, constant: -constant).isActive = true
-        case .bottom(let constant):
-            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -constant).isActive = true
-        case .centerX(let constant):
-            centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: constant).isActive = true
-        case .centerY(let constant):
-            centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant).isActive = true
-        case .multiplier(let multiplier, edge: let edge):
-            pinTo(view, edge: edge, multiplier: multiplier)
-        case .relation(let relation, edge: let edge):
-            pinTo(view, edge: edge, relation: relation)
+        var toItem: Any? = view
+        if let layoutGuide = edge.layoutGuide {
+            toItem = view[keyPath: layoutGuide]
         }
-    }
-
-    private func pinTo(_ view: UIView, edge: Edge, multiplier: CGFloat) {
-        switch edge {
-        case .top:
-            topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor,
-                                 multiplier: multiplier).isActive = true
-        case .left:
-            leftAnchor.constraint(equalToSystemSpacingAfter: view.leftAnchor,
-                                  multiplier: multiplier).isActive = true
-        case .right:
-            rightAnchor.constraint(equalToSystemSpacingAfter: view.rightAnchor,
-                                   multiplier: multiplier).isActive = true
-        case .bottom:
-            bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor,
-                                    multiplier: multiplier).isActive = true
-        case .centerX:
-            centerXAnchor.constraint(equalToSystemSpacingAfter: view.centerXAnchor,
-                                     multiplier: multiplier).isActive = true
-        case .centerY:
-            centerYAnchor.constraint(equalToSystemSpacingBelow: view.centerYAnchor,
-                                     multiplier: multiplier).isActive = true
-        case .multiplier(_, edge: _):
-            fatalError("Can't be multiplier with multiplier")
-        case .relation(_, edge: _):
-            fatalError("Can't be relation with relation")
-        }
-    }
-
-    private func pinTo(_ view: UIView, edge: Edge, relation: Relation) {
-        switch relation {
-        case .equal:
-            fatalError("Use without relation")
-        case .lessOrEqual:
-            switch edge {
-            case .top(let constant):
-                topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: constant).isActive = true
-            case .left(let constant):
-                leftAnchor.constraint(lessThanOrEqualTo: view.leftAnchor, constant: constant).isActive = true
-            case .right(let constant):
-                rightAnchor.constraint(lessThanOrEqualTo: view.rightAnchor, constant: -constant).isActive = true
-            case .bottom(let constant):
-                bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -constant).isActive = true
-            case .centerX(let constant):
-                centerXAnchor.constraint(lessThanOrEqualTo: view.centerXAnchor, constant: constant).isActive = true
-            case .centerY(let constant):
-                centerYAnchor.constraint(lessThanOrEqualTo: view.centerYAnchor, constant: constant).isActive = true
-            case .multiplier(_, edge: _):
-                fatalError("Can't be multiplier with relation")
-            case .relation(_, edge: _):
-                fatalError("Can't be relation with relation")
-            }
-        case .greaterOrEqual:
-            switch edge {
-            case .top(let constant):
-                topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: constant).isActive = true
-            case .left(let constant):
-                leftAnchor.constraint(greaterThanOrEqualTo: view.leftAnchor, constant: constant).isActive = true
-            case .right(let constant):
-                rightAnchor.constraint(greaterThanOrEqualTo: view.rightAnchor, constant: -constant).isActive = true
-            case .bottom(let constant):
-                bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor, constant: -constant).isActive = true
-            case .centerX(let constant):
-                centerXAnchor.constraint(greaterThanOrEqualTo: view.centerXAnchor, constant: constant).isActive = true
-            case .centerY(let constant):
-                centerYAnchor.constraint(greaterThanOrEqualTo: view.centerYAnchor, constant: constant).isActive = true
-            case .multiplier(_, edge: _):
-                fatalError("Can't be multiplier with relation")
-            case .relation(_, edge: _):
-                fatalError("Can't be relation with relation")
-            }
-        }
+        let constraint = NSLayoutConstraint(
+            item: self,
+            attribute: edge.kind.attribute,
+            relatedBy: edge.relation,
+            toItem: toItem,
+            attribute: edge.kind.attribute,
+            multiplier: 1.0,
+            constant: edge.constant
+        )
+        constraint.priority(edge.priority).isActive(true)
     }
 }
 
-extension Array where Element == UIView.Edge {
-    var top: CGFloat? { first { $0.isEdge(.top) }?.value }
-    var left: CGFloat? { first { $0.isEdge(.left) }?.value }
-    var right: CGFloat? { first { $0.isEdge(.right) }?.value }
-    var bottom: CGFloat? { first { $0.isEdge(.bottom) }?.value }
-    var centerX: CGFloat? { first { $0.isEdge(.centerX) }?.value }
-    var centerY: CGFloat? { first { $0.isEdge(.centerY) }?.value }
+public extension Array where Element == UIView.Edge {
+    var top: CGFloat? { first { $0.kind == .top }?.constant }
+    var left: CGFloat? { first { $0.kind == .left }?.constant }
+    var right: CGFloat? { first { $0.kind == .right }?.constant }
+    var bottom: CGFloat? { first { $0.kind == .bottom }?.constant }
+    var centerX: CGFloat? { first { $0.kind == .centerX }?.constant }
+    var centerY: CGFloat? { first { $0.kind == .centerY }?.constant }
 }
