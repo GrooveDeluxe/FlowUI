@@ -41,7 +41,7 @@ public extension UIView {
                      layoutGuide: KeyPath<UIView, UILayoutGuide>? = nil) {
             self.kind = kind
             self.relation = relation
-            self.constant = (kind == .right || kind == .bottom) ? -constant : constant
+            self.constant = constant
             self.priority = .required
             self.layoutGuide = layoutGuide
         }
@@ -122,7 +122,7 @@ public extension UIView {
             toItem: toItem,
             attribute: edge.kind.attribute,
             multiplier: 1.0,
-            constant: edge.constant
+            constant: (edge.kind == .right || edge.kind == .bottom) ? -edge.constant : edge.constant
         )
         constraint.priority(edge.priority).isActive(true)
     }
