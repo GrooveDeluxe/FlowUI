@@ -42,7 +42,7 @@ public extension UIView {
             self.kind = kind
             self.relation = relation
             self.constant = constant
-            self.priority = .required
+            self.priority = priority
             self.layoutGuide = layoutGuide
         }
 
