@@ -6,21 +6,6 @@
 import UIKit
 
 public extension UIButton {
-    struct Style {
-        public enum Item {
-            case font(UIFont)
-            case foregroundColor(UIColor)
-            case backgroundColor(UIColor)
-            case cornerRadius(CGFloat)
-        }
-
-        let styleItems: [Item]
-
-        public init(_ styleItems: Item...) {
-            self.styleItems = styleItems
-        }
-    }
-
     convenience init(title: String?, type: UIButton.ButtonType = .custom) {
         self.init(type: type)
         translatesAutoresizingMaskIntoConstraints = false
@@ -40,19 +25,8 @@ public extension UIButton {
     }
 
     @discardableResult
-    func style(_ style: Style) -> Self {
-        style.styleItems.forEach {
-            switch $0 {
-            case .font(let font):
-                titleLabel?.font = font
-            case .foregroundColor(let color):
-                setTitleColor(color, for: .normal)
-            case .backgroundColor(let color):
-                backgroundColor = color
-            case .cornerRadius(let radius):
-                layer.cornerRadius = radius
-            }
-        }
+    func titleFont(_ font: UIFont) -> Self {
+        titleLabel?.font = font
         return self
     }
 

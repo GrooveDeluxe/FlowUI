@@ -52,27 +52,17 @@ public extension UIComponents {
     }
 
     func button(title: String = "",
-                style: UIButton.Style? = nil,
                 size: CGSize? = nil,
                 type: UIButton.ButtonType = .custom) -> UIButton {
-        let button = UIButton(title: title, type: type)
+        UIButton(title: title, type: type)
             .size(width: size?.width, height: size?.height)
-        if let style = style {
-            button.style(style)
-        }
-        return button
     }
 
     func button(attributedTitle: NSAttributedString? = nil,
-                style: UIButton.Style? = nil,
                 size: CGSize? = nil,
                 type: UIButton.ButtonType = .custom) -> UIButton {
-        let button = UIButton(attributedTitle: attributedTitle, type: type)
+        UIButton(attributedTitle: attributedTitle, type: type)
             .size(width: size?.width, height: size?.height)
-        if let style = style {
-            button.style(style)
-        }
-        return button
     }
 
     func button(image: UIImage?, size: CGSize? = nil, type: UIButton.ButtonType = .custom) -> UIButton {

@@ -36,8 +36,8 @@ class MiscViewController: UIViewController {
     private let buttonAttributedTitle = NSAttributedString(
         string: "Button Attributed Title",
         attributes: [
-            .font: UIFont.boldSystemFont(ofSize: 20),
-            .foregroundColor: UIColor.magenta
+            .font: UIFont.boldSystemFont(ofSize: 24),
+            .foregroundColor: UIColor.cyan
         ]
     )
 
@@ -54,20 +54,15 @@ class MiscViewController: UIViewController {
 
         space(height: 32)
 
-        button(
-            title: "Red button",
-            style: .init(
-                .font(.systemFont(ofSize: 17, weight: .bold)),
-                .foregroundColor(.white),
-                .backgroundColor(.red),
-                .cornerRadius(8)
-            ),
-            type: .system
-        )
-        .size(height: 40)
-        .addTouchUpInside {
-            print("Red button tapped")
-        }
+        button(title: "Red button", type: .system)
+            .titleFont(.systemFont(ofSize: 17, weight: .bold))
+            .titleColor(.white)
+            .backgroundColor(.red)
+            .size(height: 40)
+            .cornerRadius(8)
+            .addTouchUpInside {
+                print("Red button tapped")
+            }
 
         space(height: 32)
 
@@ -75,17 +70,13 @@ class MiscViewController: UIViewController {
 
         space(height: 32)
 
-        button(
-            attributedTitle: buttonAttributedTitle,
-            style: .init(
-                .backgroundColor(.orange),
-                .cornerRadius(8)
-            )
-        )
-        .size(height: 40)
-        .addTouchUpInside {
-            print("Attributed button tapped")
-        }
+        button(attributedTitle: buttonAttributedTitle)
+            .backgroundColor(.orange)
+            .cornerRadius(8)
+            .size(height: 40)
+            .addTouchUpInside {
+                print("Attributed button tapped")
+            }
     }
 
     private lazy var rows = stack(.vertical, spacing: 8) {
