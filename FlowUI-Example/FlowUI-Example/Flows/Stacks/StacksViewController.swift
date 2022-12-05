@@ -41,13 +41,11 @@ final class StacksViewController: UIViewController {
                             square(size: 20, color: .green)
                             square(size: 20, color: .blue)
                         }
-                        .wrappedInContainer()
                     }
 
                     container(color: .orange)
                         .size(width: 10)
                 }
-                .wrappedInContainer()
 
                 space(height: 20)
 
@@ -56,7 +54,6 @@ final class StacksViewController: UIViewController {
 
                 space(height: 20)
             }
-            .wrappedInContainer()
         }
     }
 

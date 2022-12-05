@@ -79,14 +79,19 @@ class MiscViewController: UIViewController {
             }
     }
 
+    private let optionalView: UIView? = nil
+
     private lazy var rows = stack(.vertical, spacing: 8) {
         items.map { item in
             stack(.horizontal, distribution: .equalSpacing) {
                 label(.h3, text: item.title)
                 label(.subtitle, text: item.subtitle)
             }
-            .wrappedInContainer()
+            .addTapGestureRecognizer {
+                print("Tap - \(item.title)")
+            }
         }
+        optionalView
     }
     .wrappedInContainer(insets: .symmetry(h: 0, v: 8))
 

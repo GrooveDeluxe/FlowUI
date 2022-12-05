@@ -7,10 +7,6 @@ import UIKit
 
 public protocol UIComponents {}
 
-extension UIView: UIComponents {}
-
-extension UIViewController: UIComponents {}
-
 public extension UIComponents {
     func scrollView(contentInsets: UIEdgeInsets = .zero,
                     contentInsetAdjustmentBehavior: UIScrollView.ContentInsetAdjustmentBehavior = .automatic) -> UIScrollView {

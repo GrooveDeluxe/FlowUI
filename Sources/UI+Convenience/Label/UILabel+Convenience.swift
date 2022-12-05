@@ -8,22 +8,6 @@ import UIKit
 public typealias Attributes = [NSAttributedString.Key: Any]
 
 public extension UILabel {
-
-    enum Attribute {
-        case zeplin(lineHeight: CGFloat)
-        case baselineOffset(CGFloat)
-        case foregroundColor(_ color: UIColor)
-        case backgroundColor(_ color: UIColor)
-        case custom(Attributes)
-    }
-
-    struct Style {
-        let font: UIFont
-        let textColor: UIColor
-        let textAlignment: NSTextAlignment
-        let numberOfLines: Int
-    }
-
     convenience init(text: String? = "",
                      font: UIFont? = nil,
                      textColor: UIColor? = nil,
@@ -49,7 +33,7 @@ public extension UILabel {
     }
 
     @discardableResult
-    func text(_ text: String?) -> UILabel {
+    func text(_ text: String?) -> Self {
         self.text = text
         return self
     }

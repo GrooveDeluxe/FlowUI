@@ -13,7 +13,14 @@ extension UIView: ViewGroup {
     public var elements: [UIView] { [self] }
 }
 
-extension Array: ViewGroup where Element == UIView {
+extension Optional: ViewGroup where Wrapped: UIView {
+    public var elements: [UIView] {
+        guard let self = self else { return [] }
+        return [self]
+    }
+}
+
+extension Array: ViewGroup where Element: UIView {
     public var elements: [UIView] { self }
 }
 

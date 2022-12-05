@@ -17,6 +17,7 @@
 		4244D3752843A99A00FC0BD8 /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3742843A99A00FC0BD8 /* CatalogCell.swift */; };
 		4244D3792843AA6400FC0BD8 /* UITableView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3782843AA6400FC0BD8 /* UITableView+Convenience.swift */; };
 		4244D3832844043800FC0BD8 /* MiscViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3822844043800FC0BD8 /* MiscViewController.swift */; };
+		42A8C3402939E1AA0054398E /* FlowUI+Adoption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A8C33F2939E1AA0054398E /* FlowUI+Adoption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,7 @@
 		4244D3742843A99A00FC0BD8 /* CatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
 		4244D3782843AA6400FC0BD8 /* UITableView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Convenience.swift"; sourceTree = "<group>"; };
 		4244D3822844043800FC0BD8 /* MiscViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscViewController.swift; sourceTree = "<group>"; };
+		42A8C33F2939E1AA0054398E /* FlowUI+Adoption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlowUI+Adoption.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 		4244D3772843AA4300FC0BD8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				42A8C33F2939E1AA0054398E /* FlowUI+Adoption.swift */,
 				4244D3782843AA6400FC0BD8 /* UITableView+Convenience.swift */,
 			);
 			path = Extensions;
@@ -248,6 +251,7 @@
 				4244D31A2842788D00FC0BD8 /* CatalogViewController.swift in Sources */,
 				4244D3832844043800FC0BD8 /* MiscViewController.swift in Sources */,
 				4244D3162842788D00FC0BD8 /* AppDelegate.swift in Sources */,
+				42A8C3402939E1AA0054398E /* FlowUI+Adoption.swift in Sources */,
 				4244D3732843A91300FC0BD8 /* StacksViewController.swift in Sources */,
 				4244D3752843A99A00FC0BD8 /* CatalogCell.swift in Sources */,
 			);
