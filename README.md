@@ -25,6 +25,10 @@ it, simply add the following line to your Podfile:
 pod 'FlowUI'
 ```
 
+## Documentation
+
+[Documentation with a few samples of usage](./DOCUMENTATION.md)
+
 ## Author
 
 groovedeluxe@gmail.com
