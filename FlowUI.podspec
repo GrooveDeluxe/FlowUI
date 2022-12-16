@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FlowUI'
-  s.version          = '0.1.8'
+  s.version          = '0.1.9'
   s.summary          = 'A set of useful extensions for rapid UI prototyping based on UIKit'
 
 # This description is used to generate tags and improve search results.
