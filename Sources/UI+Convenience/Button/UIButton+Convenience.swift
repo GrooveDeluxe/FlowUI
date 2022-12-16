@@ -31,12 +31,6 @@ public extension UIButton {
     }
 
     @discardableResult
-    func tintColor(_ tintColor: UIColor) -> Self {
-        self.tintColor = tintColor
-        return self
-    }
-
-    @discardableResult
     func title(_ title: String?, for state: UIControl.State = .normal) -> Self {
         setTitle(title, for: state)
         return self

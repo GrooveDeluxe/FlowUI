@@ -6,6 +6,6 @@
 import UIKit
 import FlowUI
 
-extension UIView: UIComponents {}
+extension UIView: UIComponents, Configurable {}
 
 extension UIViewController: UIComponents {}

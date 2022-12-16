@@ -67,6 +67,12 @@ class MiscViewController: UIViewController {
         space(height: 32)
 
         label(labelAttributedTitle)
+            .isUserInteractionEnabled(true)
+            .configure { [weak self] in
+                print("label - \(type(of: $0))")
+                let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(labelLongPress))
+                $0.addGestureRecognizer(recognizer)
+            }
 
         space(height: 32)
 
@@ -77,6 +83,24 @@ class MiscViewController: UIViewController {
             .addTouchUpInside {
                 print("Attributed button tapped")
             }
+            .configure { [weak self] in
+                print("button - \(type(of: $0))")
+                self?.attributedButton = $0
+                $0.addTarget(self, action: #selector(buttonTouchUpOutside), for: .touchUpOutside)
+            }
+
+        space(height: 32)
+
+        activityIndicator(.large)
+            .animated(true)
+            
+    }
+
+    private var attributedButton: UIButton? {
+        didSet {
+            guard let attributedButton = attributedButton else { return }
+            print("attributedButton set - \(attributedButton)")
+        }
     }
 
     private let optionalView: UIView? = nil
@@ -131,5 +155,13 @@ private extension MiscViewController {
         scrollView.addSubview(stack, insets: .symmetry(h: 16, v: 0))
         view.addSubview(scrollView, insets: .zero)
         stack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -32).isActive(true)
+    }
+
+    @objc func labelLongPress() {
+        print("label long tap")
+    }
+
+    @objc func buttonTouchUpOutside() {
+        print("button touch up outside")
     }
 }

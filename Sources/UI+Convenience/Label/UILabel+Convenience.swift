@@ -23,11 +23,9 @@ public extension UILabel {
     }
 
     convenience init(attributedText: NSAttributedString? = nil,
-                     textAlignment: NSTextAlignment = .left,
                      numberOfLines: Int = 0) {
         self.init()
         self.attributedText = attributedText
-        self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines
         self.translatesAutoresizingMaskIntoConstraints = false
     }

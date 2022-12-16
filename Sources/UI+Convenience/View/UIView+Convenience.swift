@@ -126,4 +126,32 @@ public extension UIView {
         contentMode = mode
         return self
     }
+
+    @discardableResult
+    func tintColor(_ color: UIColor) -> Self {
+        tintColor = color
+        return self
+    }
+
+    @discardableResult
+    func mask(_ maskView: UIView?) -> Self {
+        mask = maskView
+        return self
+    }
+
+    @discardableResult
+    func tintAdjustmentMode(_ mode: UIView.TintAdjustmentMode) -> Self {
+        tintAdjustmentMode = mode
+        return self
+    }
+}
+
+public protocol Configurable {}
+
+public extension Configurable {
+    @discardableResult
+    func configure(_ configure: (Self) -> Void) -> Self {
+        configure(self)
+        return self
+    }
 }

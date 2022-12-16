@@ -42,9 +42,8 @@ public extension UIComponents {
     }
 
     func label(_ attributedText: NSAttributedString? = nil,
-               textAlignment: NSTextAlignment = .left,
                numberOfLines: Int = 0) -> UILabel {
-        UILabel(attributedText: attributedText, textAlignment: textAlignment, numberOfLines: numberOfLines)
+        UILabel(attributedText: attributedText, numberOfLines: numberOfLines)
     }
 
     func button(title: String = "",
@@ -102,5 +101,14 @@ public extension UIComponents {
         let view = UIView(color: color, size: size)
         configure?(view)
         return view
+    }
+
+    func activityIndicator(_ style: UIActivityIndicatorView.Style,
+                           color: UIColor = .gray,
+                           hidesWhenStopped: Bool = true) -> UIActivityIndicatorView {
+        UIActivityIndicatorView(style: style)
+            .translatesAutoresizingMaskIntoConstraints(false)
+            .color(color)
+            .hidesWhenStopped(hidesWhenStopped)
     }
 }

@@ -9,6 +9,7 @@
         - [1.1.5 Convenience initializers](#115-convenience-initializers)
         - [1.1.6 Chainable methods](#116-chainable-methods)
         - [1.1.7 Tap recognition](#117-tap-recognition)
+        - [1.1.8 Configurable protocol](#118-configurable-protocol)
     - [1.2 UILabel](#12-uilabel)
         - [1.2.1 Instantiation](#121-instantiation)
         - [1.2.2 Convenience initializers](#122-convenience-initializers)
@@ -25,6 +26,10 @@
         - [1.5.1 Instantiation](#151-instantiation)
         - [1.5.2 Convenience initializers](#152-convenience-initializers)
         - [1.5.3 Extended methods](#153-extended-methods)
+    - [1.6 UIActivityIndicatorView](#16-uiactivityindicatorview)
+        - [1.6.1 Instantiation](#161-instantiation)
+        - [1.6.2 Convenience initializers](#162-convenience-initializers)
+        - [1.6.3 Chainable methods](#1.6.3-chainable-methods)
 - [2 UIComponents protocol](#2-uicomponents-protocol)
     - [2.1 scrollView](#21-scrollview)
     - [2.2 stack](#22-stack)
@@ -39,6 +44,7 @@
     - [2.6 space](#26-space)
     - [2.7 flexibleSpace](#27-flexiblespace)
     - [2.8 container](#28-container)
+    - [2.9 activityIndicator](29-activityindicator)
 - [3 UIViewBuilder](#3-uiviewbuilder)
 
 
@@ -206,6 +212,45 @@ extension UIView {
         .addTapGestureRecognizer {
             // Handle tap
         }
+```
+
+#### 1.1.8 Configurable protocol
+
+With adoption Configurable protocol to UIView, you can additional configure any UIVIew subclasses.
+
+```swift
+    // FlowUI Configurable
+    public protocol Configurable {}
+    
+    public extension Configurable {
+        @discardableResult
+        func configure(_ configure: (Self) -> Void) -> Self {
+            configure(self)
+            return self
+        }
+    }
+    
+    // Adoption
+    extension UIView: Configurable {}
+    
+    // Usage
+    private var attributedButton: UIButton?
+    
+    private lazy var stackView = stack(.vertical, spacing: 8) {
+        label("Some text".body)
+            .isUserInteractionEnabled(true)
+            .configure { [weak self] in
+                let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(labelLongPress))
+                $0.addGestureRecognizer(recognizer)
+            }
+        
+        button(attributedTitle: "Done".h3)
+            .size(height: 40)
+            .configure { [weak self] in
+                self?.attributedButton = $0
+                $0.addTarget(self, action: #selector(touchUpOutside), for: .touchUpOutside)
+            }
+    }    
 ```
 
 
@@ -414,6 +459,30 @@ Also all UIView chainable methods available.
 Also all UIView chainable methods available.
 
 
+### 1.6 UIActivityIndicatorView
+
+#### 1.6.1 Instantiation
+```swift
+    private lazy var activityIndicatorView = UIActivityIndicatorView()
+```
+
+#### 1.6.2 Convenience initializers
+
+```swift
+    convenience init(_ style: UIActivityIndicatorView.Style, color: UIColor = .gray, hidesWhenStopped: Bool = true)
+```
+
+#### 1.6.3 Chainable methods
+```swift
+    func style(_ newStyle: UIActivityIndicatorView.Style) -> Self
+    func hidesWhenStopped(_ hides: Bool) -> Self
+    func color(_ newColor: UIColor) -> Self
+    
+    // Extended for startAnimating() and stopAnimating()
+    func animated(_ animated: Bool) -> Self
+```
+
+
 # 2 UIComponents protocol
 
 Also you can adopt yours UIView's and UIViewController's to UIComponents protocol and instantiate views in more comfortable manner with some extra components (imageView, space, flexibleSpace and container):
@@ -567,6 +636,24 @@ extension UIViewController: UIComponents {}
     // Instantiation
     private lazy var container = container(size: .square)
 ```
+
+#### 2.9 activityIndicator
+
+```swift
+    // Constructor 1
+    func activityIndicator(_ style: UIActivityIndicatorView.Style,
+                           color: UIColor = .gray,
+                           hidesWhenStopped: Bool = true) -> UIActivityIndicatorView
+    
+    // Instantiation variants
+    private lazy var activityIndicator = activityIndicator(.large)
+    
+    private lazy var activityIndicator = activityIndicator(.medium)
+        .animated(true)
+    
+    private lazy var activityIndicator = activityIndicator(.large, color: .white, hidesWhenStopped = false)
+```
+
 
 
 # 3 UIViewBuilder
