@@ -41,6 +41,11 @@ class MiscViewController: UIViewController {
         ]
     )
 
+    private lazy var leftToRightLabel = label("Left to right")
+        .contentCompressionResistancePriority(.defaultLow, for: .horizontal)
+
+    private lazy var rightToLeftLabel = label("من اليمين الى اليسار")
+
     private lazy var stack = stack(.vertical) {
 
         centeredH1Label
@@ -93,7 +98,25 @@ class MiscViewController: UIViewController {
 
         activityIndicator(.large)
             .animated(true)
-            
+
+        space(height: 32)
+
+        container {
+            $0.addSubview(
+                self.leftToRightLabel,
+                pinnedTo: .top.greaterThanOrEqual, .bottom.greaterThanOrEqual, .leading, .centerY
+            )
+            $0.addSubview(
+                self.rightToLeftLabel,
+                pinnedTo: .top.greaterThanOrEqual, .bottom.greaterThanOrEqual, .trailing, .centerY
+            )
+            self.rightToLeftLabel.leadingAnchor.constraint(
+                equalTo: self.leftToRightLabel.trailingAnchor, constant: 8
+            ).isActive(true)
+        }
+        .size(height: 40)
+
+        space(height: 32)
     }
 
     private var attributedButton: UIButton? {

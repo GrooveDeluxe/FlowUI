@@ -30,7 +30,7 @@ public extension UIComponents {
     func label(_ text: String? = "",
                font: UIFont? = nil,
                textColor: UIColor? = nil,
-               textAlignment: NSTextAlignment = .left,
+               textAlignment: NSTextAlignment = .natural,
                numberOfLines: Int = 0) -> UILabel {
         UILabel(
             text: text,

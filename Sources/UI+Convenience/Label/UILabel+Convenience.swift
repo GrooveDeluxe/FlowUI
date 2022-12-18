@@ -11,7 +11,7 @@ public extension UILabel {
     convenience init(text: String? = "",
                      font: UIFont? = nil,
                      textColor: UIColor? = nil,
-                     textAlignment: NSTextAlignment = .left,
+                     textAlignment: NSTextAlignment = .natural,
                      numberOfLines: Int = 0) {
         self.init()
         self.text = text
