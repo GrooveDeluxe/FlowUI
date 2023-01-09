@@ -92,8 +92,21 @@ public extension UIView {
     }
 
     @discardableResult
-    func cornerRadius(_ radius: CGFloat = defaultCornerRadius) -> Self {
+    func cornerRadius(_ radius: CGFloat, mask: CACornerMask = []) -> Self {
         layer.cornerRadius = radius
+        layer.maskedCorners = mask
+        return self
+    }
+
+    @discardableResult
+    func maskedCorners(_ maskedCorners: CACornerMask) -> Self {
+        layer.maskedCorners = maskedCorners
+        return self
+    }
+
+    @discardableResult
+    func cornerCurve(_ value: CALayerCornerCurve) -> Self {
+        layer.cornerCurve = value
         return self
     }
 

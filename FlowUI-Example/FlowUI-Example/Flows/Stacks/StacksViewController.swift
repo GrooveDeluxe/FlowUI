@@ -27,6 +27,7 @@ final class StacksViewController: UIViewController {
 
                 container(color: .orange)
                     .size(height: 10)
+                    .cornerRadius(5, mask: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
 
                 space(height: 20)
 
@@ -51,6 +52,7 @@ final class StacksViewController: UIViewController {
 
                 container(color: .orange)
                     .size(height: 10)
+                    .cornerRadius(5, mask: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
 
                 space(height: 20)
             }
