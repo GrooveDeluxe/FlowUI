@@ -73,7 +73,7 @@ public extension UILabel {
     }
 
     @discardableResult
-    func attributedText(_ attributedText: NSAttributedString) -> Self {
+    func attributedText(_ attributedText: NSAttributedString?) -> Self {
         self.attributedText = attributedText
         return self
     }
