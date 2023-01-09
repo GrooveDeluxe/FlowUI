@@ -43,4 +43,16 @@ public extension UIStackView {
     func addArrangedSubviews(_ arrangedSubviews: [UIView]) {
         arrangedSubviews.forEach { [weak self] in self?.addArrangedSubview($0) }
     }
+
+    @discardableResult
+    func isBaselineRelativeArrangement(_ value: Bool) -> Self {
+        isBaselineRelativeArrangement = value
+        return self
+    }
+
+    @discardableResult
+    func isLayoutMarginsRelativeArrangement(_ value: Bool) -> Self {
+        isLayoutMarginsRelativeArrangement = value
+        return self
+    }
 }

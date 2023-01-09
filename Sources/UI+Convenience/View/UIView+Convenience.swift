@@ -144,6 +144,30 @@ public extension UIView {
         tintAdjustmentMode = mode
         return self
     }
+
+    @discardableResult
+    func layoutMargins(_ value: UIEdgeInsets) -> Self {
+        layoutMargins = value
+        return self
+    }
+
+    @discardableResult
+    func directionalLayoutMargins(_ value: NSDirectionalEdgeInsets) -> Self {
+        directionalLayoutMargins = value
+        return self
+    }
+
+    @discardableResult
+    func preservesSuperviewLayoutMargins(_ value: Bool) -> Self {
+        preservesSuperviewLayoutMargins = value
+        return self
+    }
+
+    @discardableResult
+    func insetsLayoutMarginsFromSafeArea(_ value: Bool) -> Self {
+        insetsLayoutMarginsFromSafeArea = value
+        return self
+    }
 }
 
 public protocol Configurable {}
