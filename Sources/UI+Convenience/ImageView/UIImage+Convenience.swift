@@ -8,10 +8,13 @@ import UIKit
 public extension UIImageView {
     enum SizeType {
         case none
-        case byImage
-        case bySize(CGSize)
-        case byRatio(CGFloat)
-        case size(width: CGFloat?, height: CGFloat?)
+        case byImage(scale: CGFloat)
+        case width(_ value: CGFloat)
+        case height(_ value: CGFloat)
+
+        public static var byImage: Self {
+            .byImage(scale: 1.0)
+        }
     }
 
     @discardableResult
@@ -27,20 +30,19 @@ public extension UIImageView {
     }
 
     @discardableResult
-    func size(_ size: UIImageView.SizeType = .byImage) -> Self {
-        switch size {
+    func size(_ sizeType: SizeType) -> Self {
+        switch sizeType {
         case .none:
-            return self
-        case .byImage:
-            return self.size(width: image?.size.width, height: image?.size.height)
-        case .bySize(let size):
-            return self.size(width: size.width, height: size.height)
-        case .byRatio(let ratio):
-            guard let width = image?.size.width, let height = image?.size.height else { return self }
-            return self.size(width: (width * ratio).rounded(.down), height: (height * ratio).rounded(.down))
-        case .size(width: let width, height: let height):
-            return self.size(width: width, height: height)
+            break
+        case .byImage(let scale):
+            guard let imageSize = image?.size else { return self }
+            size(width: (imageSize.width * scale).rounded(.down), height: (imageSize.height * scale).rounded(.down))
+        case .width(let value):
+            size(width: value)
+        case .height(let value):
+            size(height: value)
         }
+        return self
     }
 }
 

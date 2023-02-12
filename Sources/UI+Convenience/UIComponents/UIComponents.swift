@@ -74,6 +74,15 @@ public extension UIComponents {
             .size(size)
     }
 
+    func imageView(image: UIImage? = nil,
+                   contentMode: UIView.ContentMode = .scaleToFill,
+                   size: CGSize) -> UIImageView {
+        UIImageView(image: image)
+            .translatesAutoresizingMaskIntoConstraints(false)
+            .contentMode(contentMode)
+            .size(size)
+    }
+
     func space(width: CGFloat? = nil, height: CGFloat? = nil) -> UIView {
         UIView(color: .clear, width: width, height: height)
     }

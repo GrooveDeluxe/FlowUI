@@ -64,12 +64,22 @@ public extension UIView {
     @discardableResult
     func size(width: CGFloat? = nil, height: CGFloat? = nil) -> Self {
         translatesAutoresizingMaskIntoConstraints(false)
+        var constraints: [NSLayoutConstraint] = []
         if let width = width {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
+            constraints.append(widthAnchor.constraint(equalToConstant: width))
         }
         if let height = height {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
+            constraints.append(heightAnchor.constraint(equalToConstant: height))
         }
+        NSLayoutConstraint.activate(constraints)
+        return self
+    }
+
+    /// Set aspect ratio width to height
+    @discardableResult
+    func aspectRatio(_ ratio: CGFloat) -> Self {
+        translatesAutoresizingMaskIntoConstraints(false)
+        widthAnchor.constraint(equalTo: heightAnchor, multiplier: ratio).isActive(true)
         return self
     }
 
