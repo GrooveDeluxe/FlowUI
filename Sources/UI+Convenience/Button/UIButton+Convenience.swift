@@ -6,18 +6,39 @@
 import UIKit
 
 public extension UIButton {
+    convenience init(_ title: String?, type: UIButton.ButtonType = .custom) {
+        self.init(type: type)
+        translatesAutoresizingMaskIntoConstraints = false
+        setTitle(title, for: .normal)
+    }
+
+    convenience init(_ attributedTitle: NSAttributedString?, type: UIButton.ButtonType = .custom) {
+        self.init(type: type)
+        translatesAutoresizingMaskIntoConstraints = false
+        setAttributedTitle(attributedTitle, for: .normal)
+    }
+
+    convenience init(_ image: UIImage?, type: UIButton.ButtonType = .custom) {
+        self.init(type: type)
+        translatesAutoresizingMaskIntoConstraints = false
+        setImage(image, for: .normal)
+    }
+
+    @available(*, deprecated, message: "Use init without title of first parameter instead")
     convenience init(title: String?, type: UIButton.ButtonType = .custom) {
         self.init(type: type)
         translatesAutoresizingMaskIntoConstraints = false
         setTitle(title, for: .normal)
     }
 
+    @available(*, deprecated, message: "Use init without title of first parameter instead")
     convenience init(attributedTitle: NSAttributedString?, type: UIButton.ButtonType = .custom) {
         self.init(type: type)
         translatesAutoresizingMaskIntoConstraints = false
         setAttributedTitle(attributedTitle, for: .normal)
     }
 
+    @available(*, deprecated, message: "Use init without title of first parameter instead")
     convenience init(image: UIImage?, type: UIButton.ButtonType = .custom) {
         self.init(type: type)
         translatesAutoresizingMaskIntoConstraints = false

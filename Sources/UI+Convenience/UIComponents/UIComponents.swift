@@ -46,20 +46,42 @@ public extension UIComponents {
         UILabel(attributedText: attributedText, numberOfLines: numberOfLines)
     }
 
-    func button(title: String = "",
+    func button(_ title: String? = nil,
+                size: CGSize? = nil,
+                type: UIButton.ButtonType = .custom) -> UIButton {
+        UIButton(title, type: type)
+            .size(width: size?.width, height: size?.height)
+    }
+
+    func button(_ attributedTitle: NSAttributedString?,
+                size: CGSize? = nil,
+                type: UIButton.ButtonType = .custom) -> UIButton {
+        UIButton(attributedTitle, type: type)
+            .size(width: size?.width, height: size?.height)
+    }
+
+    func button(_ image: UIImage?, size: CGSize? = nil, type: UIButton.ButtonType = .custom) -> UIButton {
+        UIButton(image, type: type)
+            .size(width: size?.width, height: size?.height)
+    }
+
+    @available(*, deprecated, message: "Use component without title of first parameter instead")
+    func button(title: String,
                 size: CGSize? = nil,
                 type: UIButton.ButtonType = .custom) -> UIButton {
         UIButton(title: title, type: type)
             .size(width: size?.width, height: size?.height)
     }
 
-    func button(attributedTitle: NSAttributedString? = nil,
+    @available(*, deprecated, message: "Use component without title of first parameter instead")
+    func button(attributedTitle: NSAttributedString?,
                 size: CGSize? = nil,
                 type: UIButton.ButtonType = .custom) -> UIButton {
         UIButton(attributedTitle: attributedTitle, type: type)
             .size(width: size?.width, height: size?.height)
     }
 
+    @available(*, deprecated, message: "Use component without title of first parameter instead")
     func button(image: UIImage?, size: CGSize? = nil, type: UIButton.ButtonType = .custom) -> UIButton {
         UIButton(image: image, type: type)
             .size(width: size?.width, height: size?.height)

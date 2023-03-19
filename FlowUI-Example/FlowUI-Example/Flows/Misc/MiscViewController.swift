@@ -59,7 +59,7 @@ class MiscViewController: UIViewController {
 
         space(height: 32)
 
-        button(title: "Red button", type: .system)
+        button("Red button", type: .system)
             .titleFont(.systemFont(ofSize: 17, weight: .bold))
             .titleColor(.white)
             .backgroundColor(.red)
@@ -81,7 +81,7 @@ class MiscViewController: UIViewController {
 
         space(height: 32)
 
-        button(attributedTitle: buttonAttributedTitle)
+        button(buttonAttributedTitle)
             .backgroundColor(.orange)
             .cornerRadius(8)
             .size(height: 40)
@@ -93,6 +93,28 @@ class MiscViewController: UIViewController {
                 self?.attributedButton = $0
                 $0.addTarget(self, action: #selector(buttonTouchUpOutside), for: .touchUpOutside)
             }
+
+        space(height: 32)
+
+        button()
+            .backgroundColor(.blue)
+            .cornerRadius(20)
+            .size(height: 40)
+            .border(color: .black, width: 2)
+            .addTouchUpInside {
+                print("Empty button tapped")
+            }
+
+        space(height: 32)
+
+        button(.testImage, size: .init(width: 100, height: 60))
+            .cornerRadius(15)
+            .clipsToBounds()
+            .border(color: .red, width: 2)
+            .addTouchUpInside {
+                print("Image button tapped")
+            }
+            .wrappedInContainer(pinnedTo: .top, .bottom, .centerX)
 
         space(height: 32)
 

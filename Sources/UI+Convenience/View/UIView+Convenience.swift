@@ -102,7 +102,7 @@ public extension UIView {
     }
 
     @discardableResult
-    func cornerRadius(_ radius: CGFloat, mask: CACornerMask = []) -> Self {
+    func cornerRadius(_ radius: CGFloat, mask: CACornerMask = .all) -> Self {
         layer.cornerRadius = radius
         layer.maskedCorners = mask
         return self
@@ -200,5 +200,11 @@ public extension Configurable {
     func configure(_ configure: (Self) -> Void) -> Self {
         configure(self)
         return self
+    }
+}
+
+public extension CACornerMask {
+    static var all: CACornerMask {
+        [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
 }
