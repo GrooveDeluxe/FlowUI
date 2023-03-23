@@ -87,6 +87,13 @@ public extension UIComponents {
             .size(width: size?.width, height: size?.height)
     }
 
+    func imageView(_ image: UIImage? = nil, size: UIImageView.SizeType = .byImage) -> UIImageView {
+        UIImageView(image: image)
+            .translatesAutoresizingMaskIntoConstraints(false)
+            .size(size)
+    }
+
+    @available(*, deprecated, message: "Use 'imageView(_:size:) and contentMode(_:) instead")
     func imageView(image: UIImage? = nil,
                    contentMode: UIView.ContentMode = .scaleToFill,
                    size: UIImageView.SizeType = .byImage) -> UIImageView {
@@ -96,6 +103,13 @@ public extension UIComponents {
             .size(size)
     }
 
+    func imageView(_ image: UIImage? = nil, size: CGSize) -> UIImageView {
+        UIImageView(image: image)
+            .translatesAutoresizingMaskIntoConstraints(false)
+            .size(size)
+    }
+
+    @available(*, deprecated, message: "Use 'imageView(_:size:) and contentMode(_:) instead")
     func imageView(image: UIImage? = nil,
                    contentMode: UIView.ContentMode = .scaleToFill,
                    size: CGSize) -> UIImageView {
