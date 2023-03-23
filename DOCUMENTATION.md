@@ -175,12 +175,18 @@ extension UIView {
     func translatesAutoresizingMaskIntoConstraints(_ translates: Bool) -> Self
     func isUserInteractionEnabled(_ enabled: Bool) -> Self
     func backgroundColor(_ color: UIColor?) -> Self
-    func cornerRadius(_ radius: CGFloat = defaultCornerRadius) -> Self
+    func cornerRadius(_ radius: CGFloat, mask: CACornerMask = []) -> Self
+    func maskedCorners(_ maskedCorners: CACornerMask) -> Self
+    func cornerCurve(_ value: CALayerCornerCurve) -> Self
     func isHidden(_ value: Bool) -> Self
     func clipsToBounds(_ clips: Bool = true) -> Self
     func contentHuggingPriority(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) -> Self
     func contentCompressionResistancePriority(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) -> Self
     func contentMode(_ mode: UIView.ContentMode) -> Self
+    func layoutMargins(_ value: UIEdgeInsets) -> Self
+    func directionalLayoutMargins(_ value: NSDirectionalEdgeInsets) -> Self
+    func preservesSuperviewLayoutMargins(_ value: Bool) -> Self
+    func insetsLayoutMarginsFromSafeArea(_ value: Bool) -> Self
     
     // Extended
     func wrappedInContainer(insets: UIEdgeInsets = .zero) -> UIView
@@ -188,6 +194,8 @@ extension UIView {
     
     func size(_ size: CGSize) -> Self
     func size(width: CGFloat? = nil, height: CGFloat? = nil) -> Self
+
+    func aspectRatio(_ ratio: CGFloat) -> Self
     
     func pinTo(_ view: UIView, edges: Edge...) -> Self
     func pinTo(_ view: UIView, edges: [Edge]) -> Self
@@ -312,7 +320,7 @@ With adoption Configurable protocol to UIView, you can additional configure any 
     func shadowOffset(_ shadowOffset: CGSize) -> Self
     func textAlignment(_ textAlignment: NSTextAlignment) -> Self
     func lineBreakMode(_ lineBreakMode: NSLineBreakMode) -> Self
-    func attributedText(_ attributedText: NSAttributedString) -> Self
+    func attributedText(_ attributedText: NSAttributedString?) -> Self
     func highlightedTextColor(_ highlightedTextColor: UIColor) -> Self
     func isHighlighted(_ isHighlighted: Bool) -> Self
     func isEnabled(_ isEnabled: Bool) -> Self
@@ -354,27 +362,27 @@ Also all UIView chainable methods available.
 
 ##### FlowUI:
 ```swift
-    private lazy var button = UIButton(title: "Login")
+    private lazy var button = UIButton("Login")
         .size(width: 300, height: 50)
         .titleColor(.white)
         .backgroundColor(.blue)
         .cornerRadius(8)
     
     // Alternative 1
-    private lazy var button = UIButton(title: "Login", type: .system)
+    private lazy var button = UIButton("Login".bold18, type: .system)
     
     // Alternative 2
-    private lazy var button = UIButton(image: .moreIcon)
+    private lazy var button = UIButton(.moreIcon)
 ```
 
 
 #### 1.3.2 Convenience initializers
 ```swift
-    convenience init(title: String?, type: UIButton.ButtonType = .custom)
+    convenience init(_ title: String?, type: UIButton.ButtonType = .custom)
 
-    convenience init(attributedTitle: NSAttributedString?, type: UIButton.ButtonType = .custom)
+    convenience init(_ attributedTitle: NSAttributedString?, type: UIButton.ButtonType = .custom)
 
-    convenience init(image: UIImage?, type: UIButton.ButtonType = .custom)
+    convenience init(_ image: UIImage?, type: UIButton.ButtonType = .custom)
 ```
 
 #### 1.3.3 Chainable methods
@@ -454,6 +462,8 @@ Also all UIView chainable methods available.
     func replaceArrangedSubviews(@UIViewBuilder arrangedSubviewsBuilder: () -> [UIView])
     func addArrangedSubviews(@UIViewBuilder arrangedSubviewsBuilder: () -> [UIView])
     func addArrangedSubviews(_ arrangedSubviews: [UIView])
+    func isBaselineRelativeArrangement(_ value: Bool) -> Self
+    func isLayoutMarginsRelativeArrangement(_ value: Bool) -> Self
 ```
 
 Also all UIView chainable methods available.
@@ -553,46 +563,62 @@ extension UIViewController: UIComponents {}
 
 ```swift
     // Constructor
-    func button(title: String = "",
+    func button(_ title: String? = nil,
                 size: CGSize? = nil,
                 type: UIButton.ButtonType = .custom) -> UIButton
     
-    // Instantiation
-    private lazy var button = button(title: "Login")
+    // Instantiation variants
+    private lazy var button = button("Login")
+
+    private lazy var button = button(size: .square(40))
 ```
 
 #### 2.4.2 button (Attributed string)
 
 ```swift
     // Constructor
-    func button(attributedTitle: NSAttributedString? = nil,
+    func button(_ attributedTitle: NSAttributedString?,
                 size: CGSize? = nil,
                 type: UIButton.ButtonType = .custom) -> UIButton
     
     // Instantiation
-    private lazy var button = button(attributedTitle: "Login".titleH3)
+    private lazy var button = button("Login".titleH3)
 ```
 
 #### 2.4.3 button (Image)
 
 ```swift
     // Constructor
-    func button(image: UIImage?, size: CGSize? = nil, type: UIButton.ButtonType = .custom) -> UIButton
+    func button(_ image: UIImage?, size: CGSize? = nil, type: UIButton.ButtonType = .custom) -> UIButton
     
     // Instantiation
-    private lazy var button = button(image: .searchIcon)
+    private lazy var button = button(.searchIcon)
 ```
 
 #### 2.5 imageView
 
 ```swift
-    // Constructor
-    func imageView(image: UIImage? = nil,
-                   contentMode: UIView.ContentMode = .scaleToFill,
+    // Constructors
+    func imageView(_ image: UIImage? = nil,
+                   size: CGSize) -> UIImageView
+
+    func imageView(_ image: UIImage? = nil,
                    size: UIImageView.SizeType = .byImage) -> UIImageView
     
-    // Instantiation
-    private lazy var imageView = imageView(image: .welcomeLogo)
+    // Instantiation variants
+    private lazy var imageView = imageView(.welcomeLogo)
+
+    private lazy var imageView = imageView(.welcomeLogo, size: .byImage(scale: 0.5))
+
+    private lazy var imageView = imageView(.welcomeLogo, size: .height(170))
+        .aspectRatio(5/4)
+
+    private lazy var imageView = imageView(.welcomeLogo, size: .width(300))
+        .aspectRatio(5/2)
+
+    private lazy var imageView = imageView(.welcomeLogo, size: CGSize(width: 100, height: 100))
+
+    private lazy var imageView = imageView(.welcomeLogo, size: .square(200))
 ```
 
 #### 2.6 space

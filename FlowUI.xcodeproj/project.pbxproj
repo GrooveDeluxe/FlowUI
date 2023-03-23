@@ -60,6 +60,7 @@
 		4244D37E2843FDB400FC0BD8 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4244D37F2843FDB400FC0BD8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4244D3802843FDB400FC0BD8 /* FlowUI.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = FlowUI.podspec; sourceTree = "<group>"; };
+		426E19FB29CCCB81000EB2FC /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		42C6C186293E86A2000C840B /* DOCUMENTATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DOCUMENTATION.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -240,6 +241,7 @@
 				4244D37E2843FDB400FC0BD8 /* LICENSE */,
 				4244D37F2843FDB400FC0BD8 /* README.md */,
 				42C6C186293E86A2000C840B /* DOCUMENTATION.md */,
+				426E19FB29CCCB81000EB2FC /* CHANGELOG.md */,
 			);
 			name = Metadata;
 			sourceTree = "<group>";
