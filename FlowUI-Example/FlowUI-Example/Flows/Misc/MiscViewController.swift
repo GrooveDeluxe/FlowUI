@@ -21,6 +21,10 @@ extension UIComponents {
 
 class MiscViewController: UIViewController {
 
+    typealias ViewModel = MiscViewModelProtocol
+
+    private let viewModel: ViewModel? = MiscViewModel()
+
     // UI components
 
     private var centeredH1Label: UILabel { .h1.textAlignment(.center).textColor(.orange) }
@@ -65,8 +69,11 @@ class MiscViewController: UIViewController {
             .backgroundColor(.red)
             .size(height: 40)
             .cornerRadius(8)
-            .addTouchUpInside {
-                print("Red button tapped")
+            .addAction {
+                print("Red button .touchUpInside")
+            }
+            .addAction(for: .touchUpOutside) {
+                print("Red button .touchUpOutside")
             }
 
         space(height: 32)
@@ -101,9 +108,7 @@ class MiscViewController: UIViewController {
             .cornerRadius(20)
             .size(height: 40)
             .border(color: .black, width: 2)
-            .addTouchUpInside {
-                print("Empty button tapped")
-            }
+            .addAction(with: viewModel, do: ViewModel.onEmptyButton)
 
         space(height: 32)
 
@@ -111,8 +116,8 @@ class MiscViewController: UIViewController {
             .cornerRadius(15)
             .clipsToBounds()
             .border(color: .red, width: 2)
-            .addTouchUpInside {
-                print("Image button tapped")
+            .addAction(for: .touchUpInside, with: self) { // unretained self, can be viewModel for example
+                $0.onImageButton()
             }
             .wrappedInContainer(pinnedTo: .top, .bottom, .centerX)
 
@@ -208,5 +213,13 @@ private extension MiscViewController {
 
     @objc func buttonTouchUpOutside() {
         print("button touch up outside")
+    }
+
+    func onEmptyButton() {
+        print("Empty button tapped")
+    }
+
+    func onImageButton() {
+        print("Image button tapped")
     }
 }

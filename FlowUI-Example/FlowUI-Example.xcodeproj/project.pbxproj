@@ -19,6 +19,7 @@
 		4244D3832844043800FC0BD8 /* MiscViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3822844043800FC0BD8 /* MiscViewController.swift */; };
 		4249F51229717F700095312E /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249F51129717F700095312E /* ImagesViewController.swift */; };
 		4249F5142971825A0095312E /* UIImage+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249F5132971825A0095312E /* UIImage+Resources.swift */; };
+		428C90E12A24AF7700C65EE4 /* MiscViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C90E02A24AF7700C65EE4 /* MiscViewModel.swift */; };
 		42A8C3402939E1AA0054398E /* FlowUI+Adoption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A8C33F2939E1AA0054398E /* FlowUI+Adoption.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		4244D3822844043800FC0BD8 /* MiscViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscViewController.swift; sourceTree = "<group>"; };
 		4249F51129717F700095312E /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		4249F5132971825A0095312E /* UIImage+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resources.swift"; sourceTree = "<group>"; };
+		428C90E02A24AF7700C65EE4 /* MiscViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscViewModel.swift; sourceTree = "<group>"; };
 		42A8C33F2939E1AA0054398E /* FlowUI+Adoption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlowUI+Adoption.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +170,7 @@
 		4244D3812844041200FC0BD8 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				428C90E02A24AF7700C65EE4 /* MiscViewModel.swift */,
 				4244D3822844043800FC0BD8 /* MiscViewController.swift */,
 			);
 			path = Misc;
@@ -263,6 +266,7 @@
 			files = (
 				4249F5142971825A0095312E /* UIImage+Resources.swift in Sources */,
 				4244D3792843AA6400FC0BD8 /* UITableView+Convenience.swift in Sources */,
+				428C90E12A24AF7700C65EE4 /* MiscViewModel.swift in Sources */,
 				4244D31A2842788D00FC0BD8 /* CatalogViewController.swift in Sources */,
 				4249F51229717F700095312E /* ImagesViewController.swift in Sources */,
 				4244D3832844043800FC0BD8 /* MiscViewController.swift in Sources */,

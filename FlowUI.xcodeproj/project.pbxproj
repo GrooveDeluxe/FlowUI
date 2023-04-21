@@ -19,7 +19,7 @@
 		4244D35B2843A49000FC0BD8 /* UILabel+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D33E2843A49000FC0BD8 /* UILabel+Convenience.swift */; };
 		4244D35C2843A49000FC0BD8 /* CABasicAnimation+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3402843A49000FC0BD8 /* CABasicAnimation+Convenience.swift */; };
 		4244D35D2843A49000FC0BD8 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3422843A49000FC0BD8 /* UIComponents.swift */; };
-		4244D35E2843A49000FC0BD8 /* UIButton+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3442843A49000FC0BD8 /* UIButton+Actions.swift */; };
+		4244D35E2843A49000FC0BD8 /* UIControl+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3442843A49000FC0BD8 /* UIControl+Actions.swift */; };
 		4244D35F2843A49000FC0BD8 /* UIButton+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3452843A49000FC0BD8 /* UIButton+Convenience.swift */; };
 		4244D3602843A49000FC0BD8 /* UIActivityIndicatorView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3472843A49000FC0BD8 /* UIActivityIndicatorView+Convenience.swift */; };
 		4244D3612843A49000FC0BD8 /* UIVIew+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3492843A49000FC0BD8 /* UIVIew+GestureRecognizer.swift */; };
@@ -46,7 +46,7 @@
 		4244D33E2843A49000FC0BD8 /* UILabel+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Convenience.swift"; sourceTree = "<group>"; };
 		4244D3402843A49000FC0BD8 /* CABasicAnimation+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Convenience.swift"; sourceTree = "<group>"; };
 		4244D3422843A49000FC0BD8 /* UIComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
-		4244D3442843A49000FC0BD8 /* UIButton+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Actions.swift"; sourceTree = "<group>"; };
+		4244D3442843A49000FC0BD8 /* UIControl+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Actions.swift"; sourceTree = "<group>"; };
 		4244D3452843A49000FC0BD8 /* UIButton+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Convenience.swift"; sourceTree = "<group>"; };
 		4244D3472843A49000FC0BD8 /* UIActivityIndicatorView+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Convenience.swift"; sourceTree = "<group>"; };
 		4244D3492843A49000FC0BD8 /* UIVIew+GestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+GestureRecognizer.swift"; sourceTree = "<group>"; };
@@ -138,6 +138,7 @@
 				4244D33D2843A49000FC0BD8 /* Label */,
 				4244D33F2843A49000FC0BD8 /* Animation */,
 				4244D3412843A49000FC0BD8 /* UIComponents */,
+				429CA30E29F28B8A00CD5F00 /* Control */,
 				4244D3432843A49000FC0BD8 /* Button */,
 				4244D3462843A49000FC0BD8 /* ActivityIndicatorView */,
 				4244D3482843A49000FC0BD8 /* View */,
@@ -206,7 +207,6 @@
 		4244D3432843A49000FC0BD8 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				4244D3442843A49000FC0BD8 /* UIButton+Actions.swift */,
 				4244D3452843A49000FC0BD8 /* UIButton+Convenience.swift */,
 			);
 			path = Button;
@@ -244,6 +244,14 @@
 				426E19FB29CCCB81000EB2FC /* CHANGELOG.md */,
 			);
 			name = Metadata;
+			sourceTree = "<group>";
+		};
+		429CA30E29F28B8A00CD5F00 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				4244D3442843A49000FC0BD8 /* UIControl+Actions.swift */,
+			);
+			path = Control;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,7 +348,7 @@
 				4244D35F2843A49000FC0BD8 /* UIButton+Convenience.swift in Sources */,
 				4244D3572843A49000FC0BD8 /* UIImage+Convenience.swift in Sources */,
 				4244D3622843A49000FC0BD8 /* UIView+Edges.swift in Sources */,
-				4244D35E2843A49000FC0BD8 /* UIButton+Actions.swift in Sources */,
+				4244D35E2843A49000FC0BD8 /* UIControl+Actions.swift in Sources */,
 				4244D35B2843A49000FC0BD8 /* UILabel+Convenience.swift in Sources */,
 				4244D3532843A49000FC0BD8 /* AssociatedStore.swift in Sources */,
 				4244D3612843A49000FC0BD8 /* UIVIew+GestureRecognizer.swift in Sources */,
