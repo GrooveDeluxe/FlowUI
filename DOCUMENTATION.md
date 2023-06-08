@@ -66,8 +66,8 @@ All convenience initializators below have set translatesAutoresizingMaskIntoCons
         }
         view.backgroundColor = .red
         view.layer.borderColor = .black.cgColor
-        view.layer.borderWidth = 1
-        return view
+        view.layer.borderWidth = 1
+        return view
     }
 ```
 
@@ -105,13 +105,19 @@ All convenience initializators below have set translatesAutoresizingMaskIntoCons
     addSubview(subview, insets: .symmetry(h: 16, v: 32))
     
     // Alternative 1
-    addSubview(subview, insets: .all(.zero).with(top: 16))
+    addSubview(subview, insets: .zero.top(16).left(32))
     
     // Alternative 2
     addSubview(subview, insets: .horizontal(16, top: 8, bottom: 24))
     
     // Alternative 3
     addSubview(subview, insets: .vertical(16, left: 8, right: 0))
+
+    // Alternative 4
+    addSubview(subview, insets: .all(20).horizontal(32))
+
+    // Alternative 5
+    addSubview(subview, insets: .all(20).vertical(10))
 ```
 
 #### 1.1.3 Adding views with pin to edges
@@ -133,6 +139,9 @@ All convenience initializators below have set translatesAutoresizingMaskIntoCons
     addSubview(subview, pinnedTo: .top.relation(.greaterThanOrEqual).priority(.defaultLow), left(16))
     
     // Alternative 2
+    addSubview(subview, pinnedTo: .top.greaterThanOrEqual.priority(.defaultLow), left(16))
+    
+    // Alternative 3
     addSubview(subview, pinnedTo: .top(16).safeArea, .centerX, .topBottom(16).safeArea)
 ```
 
@@ -345,7 +354,7 @@ Also all UIView chainable methods available.
 #### 1.3.1 Instantiation
 ##### Pure UIKit:
 ```swift
-    private lazy var label: UIButton = {
+    private lazy var button: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Login", for: .normal)
@@ -356,7 +365,8 @@ Also all UIView chainable methods available.
             view.widthAnchor.constraint(equalToConstant: 300),
             view.heightAnchor.constraint(equalToConstant: 50)
         }
-        return label
+        button.addTarget(self, action: #selector(buttonTouchUpOutside), for: .touchUpOutside)
+        return button
     }()
 ```
 
@@ -367,12 +377,25 @@ Also all UIView chainable methods available.
         .titleColor(.white)
         .backgroundColor(.blue)
         .cornerRadius(8)
+        .addAction { [weak self] in
+            self?.buttonTouchUpOutside()
+        }
     
     // Alternative 1
     private lazy var button = UIButton("Login".bold18, type: .system)
-    
+        .addAction(for: .touchUpOutside) { [weak self] in
+            self?.buttonTouchUpOutside()
+        }
+
     // Alternative 2
+    private lazy var button = UIButton("Login".bold18, type: .system)
+        .addAction(for: .touchUpOutside, with: self) {
+            $0.buttonTouchUpOutside()
+        }
+    
+    // Alternative 3
     private lazy var button = UIButton(.moreIcon)
+        .addAction(with: viewModel, do: ViewModel.onMoreButton)
 ```
 
 
@@ -492,6 +515,73 @@ Also all UIView chainable methods available.
     func animated(_ animated: Bool) -> Self
 ```
 
+### 1.7 UIControl
+
+#### 1.7.1 Instantiation
+##### Pure UIKit:
+```swift
+    private lazy var button: UIButton = {
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Login", for: .normal)
+        button.addTarget(self, action: #selector(buttonTouchUpOutside), for: .touchUpOutside)
+        return button
+    }()
+
+    private lazy var uiSwitch: UISwitch = {
+        let uiSwitch = UISwitch()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        uiSwitch.addTarget(self, action: #selector(onSwitchValueChanged), for: .valueChanged)
+        return uiSwitch
+    }()
+```
+
+##### FlowUI:
+```swift
+    private lazy var button = UIButton("Login")
+        .addAction { [weak self] in
+            self?.buttonTouchUpOutside()
+        }
+
+    private lazy var uiSwitch = UISwitch()
+        .translatesAutoresizingMaskIntoConstraints(false)
+        .addAction(for: .valueChanged, with: viewModel, do: ViewModel.onSwitchValueChanged)
+    
+    // Alternative 1
+    private lazy var button = UIButton("Login".bold18, type: .system)
+        .addAction(for: .touchUpInside) { [weak self] in
+            self?.buttonTouchUpInside()
+        }
+
+    // Alternative 2
+    private lazy var button = UIButton("Login".bold18, type: .system)
+        .addAction(with: self) { // unretained self, can be viewModel for example
+            $0.buttonTouchUpInside()
+        }
+    
+    // Alternative 3
+    private lazy var button = UIButton(.moreIcon)
+        .addAction(with: viewModel, do: ViewModel.onMoreButton)
+```
+
+#### 1.7.2 Chainable methods
+```swift
+    // Calling an object method using currying
+    func addAction<T>(for event: UIControl.Event = .touchUpInside,
+                      with object: T?,
+                      do method: @escaping (T) -> () -> Void) -> Self
+
+    // Calling action with unretained object, wich can be self or viewModel for example
+    func addAction<T: AnyObject>(for event: UIControl.Event = .touchUpInside,
+                                 with object: T?,
+                                 action: @escaping (T) -> Void) -> Self
+
+    func addAction<T>(for event: UIControl.Event = .touchUpInside,
+                      with object: T?,
+                      action: @escaping (T) -> Void) -> Self
+
+    func addAction(for event: UIControl.Event = .touchUpInside, action: @escaping () -> Void) -> Self
+```
 
 # 2 UIComponents protocol
 
@@ -660,7 +750,7 @@ extension UIViewController: UIComponents {}
                    configure: ((UIView) -> Void)? = nil) -> UIView
     
     // Instantiation
-    private lazy var container = container(size: .square)
+    private lazy var container = container(size: .square(48))
 ```
 
 #### 2.9 activityIndicator

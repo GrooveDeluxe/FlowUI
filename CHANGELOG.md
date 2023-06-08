@@ -1,3 +1,10 @@
+# 0.2.2
+
+## Changes:
+
+* UIButton addTouchUpInside deprecated, added new UIControl actions for all event types instead
+* Added new convenience methods for UIEdgeInsets
+
 # 0.2.1
 
 ## Changes:
