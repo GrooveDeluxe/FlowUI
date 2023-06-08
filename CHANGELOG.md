@@ -1,3 +1,9 @@
+# 0.2.3
+
+## Changes:
+
+* UIControl action methods disambiguated
+
 # 0.2.2
 
 ## Changes:

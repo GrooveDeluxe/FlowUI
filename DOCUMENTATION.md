@@ -30,6 +30,9 @@
         - [1.6.1 Instantiation](#161-instantiation)
         - [1.6.2 Convenience initializers](#162-convenience-initializers)
         - [1.6.3 Chainable methods](#1.6.3-chainable-methods)
+    - [1.7 UIControl](#17-uicontrol)
+        - [1.7.1 Instantiation](#171-instantiation)
+        - [1.7.2 Chainable methods](#1.7.2-chainable-methods)
 - [2 UIComponents protocol](#2-uicomponents-protocol)
     - [2.1 scrollView](#21-scrollview)
     - [2.2 stack](#22-stack)
@@ -265,7 +268,7 @@ With adoption Configurable protocol to UIView, you can additional configure any 
             .size(height: 40)
             .configure { [weak self] in
                 self?.attributedButton = $0
-                $0.addTarget(self, action: #selector(touchUpOutside), for: .touchUpOutside)
+                $0.addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
             }
     }    
 ```
@@ -365,7 +368,7 @@ Also all UIView chainable methods available.
             view.widthAnchor.constraint(equalToConstant: 300),
             view.heightAnchor.constraint(equalToConstant: 50)
         }
-        button.addTarget(self, action: #selector(buttonTouchUpOutside), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpInside)
         return button
     }()
 ```
@@ -378,24 +381,24 @@ Also all UIView chainable methods available.
         .backgroundColor(.blue)
         .cornerRadius(8)
         .addAction { [weak self] in
-            self?.buttonTouchUpOutside()
+            self?.buttonTouchUpInside()
         }
     
     // Alternative 1
     private lazy var button = UIButton("Login".bold18, type: .system)
-        .addAction(for: .touchUpOutside) { [weak self] in
-            self?.buttonTouchUpOutside()
+        .addAction(for: .touchUpInside) { [weak self] in
+            self?.buttonTouchUpInside()
         }
 
     // Alternative 2
     private lazy var button = UIButton("Login".bold18, type: .system)
-        .addAction(for: .touchUpOutside, with: self) {
-            $0.buttonTouchUpOutside()
+        .addAction(for: .touchUpInside, with: self) {
+            $0.buttonTouchUpInside()
         }
     
     // Alternative 3
     private lazy var button = UIButton(.moreIcon)
-        .addAction(with: viewModel, do: ViewModel.onMoreButton)
+        .addAction(on: viewModel, do: ViewModel.onMoreButton)
 ```
 
 
@@ -524,7 +527,7 @@ Also all UIView chainable methods available.
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Login", for: .normal)
-        button.addTarget(self, action: #selector(buttonTouchUpOutside), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpInside)
         return button
     }()
 
@@ -540,12 +543,12 @@ Also all UIView chainable methods available.
 ```swift
     private lazy var button = UIButton("Login")
         .addAction { [weak self] in
-            self?.buttonTouchUpOutside()
+            self?.buttonTouchUpInside()
         }
 
     private lazy var uiSwitch = UISwitch()
         .translatesAutoresizingMaskIntoConstraints(false)
-        .addAction(for: .valueChanged, with: viewModel, do: ViewModel.onSwitchValueChanged)
+        .addAction(for: .valueChanged, on: viewModel, do: ViewModel.onSwitchValueChanged)
     
     // Alternative 1
     private lazy var button = UIButton("Login".bold18, type: .system)
@@ -561,21 +564,17 @@ Also all UIView chainable methods available.
     
     // Alternative 3
     private lazy var button = UIButton(.moreIcon)
-        .addAction(with: viewModel, do: ViewModel.onMoreButton)
+        .addAction(on: viewModel, do: ViewModel.onMoreButton)
 ```
 
 #### 1.7.2 Chainable methods
 ```swift
     // Calling an object method using currying
     func addAction<T>(for event: UIControl.Event = .touchUpInside,
-                      with object: T?,
+                      on object: T?,
                       do method: @escaping (T) -> () -> Void) -> Self
 
     // Calling action with unretained object, wich can be self or viewModel for example
-    func addAction<T: AnyObject>(for event: UIControl.Event = .touchUpInside,
-                                 with object: T?,
-                                 action: @escaping (T) -> Void) -> Self
-
     func addAction<T>(for event: UIControl.Event = .touchUpInside,
                       with object: T?,
                       action: @escaping (T) -> Void) -> Self

@@ -108,7 +108,7 @@ class MiscViewController: UIViewController {
             .cornerRadius(20)
             .size(height: 40)
             .border(color: .black, width: 2)
-            .addAction(with: viewModel, do: ViewModel.onEmptyButton)
+            .addAction(on: viewModel, do: ViewModel.onEmptyButton)
 
         space(height: 32)
 

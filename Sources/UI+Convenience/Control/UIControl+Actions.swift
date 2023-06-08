@@ -40,10 +40,10 @@ public extension UIControl {
 
     @discardableResult
     func addAction<T>(for event: UIControl.Event = .touchUpInside,
-                      with object: T?,
+                      on object: T?,
                       do method: @escaping (T) -> () -> Void) -> Self {
-        guard let object else { return self }
-        return addAction(for: event) {
+        addAction(for: event) {
+            guard let object else { return }
             method(object)()
         }
     }
@@ -52,8 +52,7 @@ public extension UIControl {
     func addAction<T: AnyObject>(for event: UIControl.Event = .touchUpInside,
                                  with object: T?,
                                  action: @escaping (T) -> Void) -> Self {
-        guard let object else { return self }
-        return addAction(for: event) { [weak object] in
+        addAction(for: event) { [weak object] in
             guard let object else { return }
             action(object)
         }
@@ -63,8 +62,8 @@ public extension UIControl {
     func addAction<T>(for event: UIControl.Event = .touchUpInside,
                       with object: T?,
                       action: @escaping (T) -> Void) -> Self {
-        guard let object else { return self }
-        return addAction(for: event) {
+        addAction(for: event) {
+            guard let object else { return }
             action(object)
         }
     }
