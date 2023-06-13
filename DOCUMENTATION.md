@@ -575,6 +575,10 @@ Also all UIView chainable methods available.
                       do method: @escaping (T) -> () -> Void) -> Self
 
     // Calling action with unretained object, wich can be self or viewModel for example
+    func addAction<T: AnyObject>(for event: UIControl.Event = .touchUpInside,
+                                 with object: T?,
+                                 action: @escaping (T) -> Void) -> Self
+    
     func addAction<T>(for event: UIControl.Event = .touchUpInside,
                       with object: T?,
                       action: @escaping (T) -> Void) -> Self
