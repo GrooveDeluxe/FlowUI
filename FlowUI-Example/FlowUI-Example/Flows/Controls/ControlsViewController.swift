@@ -1,28 +1,25 @@
 //
 //  Created by Dmitry Sochnev.
-//  Copyright © 2022 Dmitry Sochnev. All rights reserved.
+//  Copyright © 2023 Dmitry Sochnev. All rights reserved.
 //
 
 import UIKit
 import FlowUI
 
-final class CatalogViewController: UIViewController {
+final class ControlsViewController: UIViewController {
 
     // UI components
 
     private lazy var tableView = UITableView()
 
     // Data source
-    
+
     private var categories: [(name: String, module: UIViewController.Type)] = [
-        (name: "Stacks", module: StacksViewController.self),
-        (name: "Images", module: ImagesViewController.self),
-        (name: "Controls", module: ControlsViewController.self),
-        (name: "Misc", module: MiscViewController.self)
+        (name: "Buttons", module: ButtonsViewController.self)
     ]
 
     // View controller
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,9 +28,9 @@ final class CatalogViewController: UIViewController {
 }
 
 // MARK: - Private
-private extension CatalogViewController {
+private extension ControlsViewController {
     func setup() {
-        title = "Catalog"
+        title = "Controls"
 
         view.addSubview(tableView, insets: .zero)
 
@@ -46,7 +43,7 @@ private extension CatalogViewController {
 }
 
 // MARK: - UITableViewDataSource -
-extension CatalogViewController: UITableViewDataSource {
+extension ControlsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         categories.count
     }
@@ -60,11 +57,10 @@ extension CatalogViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate -
-extension CatalogViewController: UITableViewDelegate {
+extension ControlsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let (_, module) = categories[indexPath.row]
         let vc = module.init()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-

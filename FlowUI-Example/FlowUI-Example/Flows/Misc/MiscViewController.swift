@@ -144,6 +144,17 @@ class MiscViewController: UIViewController {
         .size(height: 40)
 
         space(height: 32)
+
+        UISlider()
+            .translatesAutoresizingMaskIntoConstraints(false)
+            .configure {
+                $0.minimumValue = -10
+                $0.maximumValue = 10
+                $0.value = 0
+            }
+            .addAction(for: .valueChanged, keyPath: \.value, on: viewModel, do: ViewModel.onSlider)
+
+        space(height: 32)
     }
 
     private var attributedButton: UIButton? {
@@ -192,6 +203,10 @@ class MiscViewController: UIViewController {
         super.viewDidLoad()
 
         setup()
+    }
+
+    deinit {
+        print("Deinit: \(self)")
     }
 }
 

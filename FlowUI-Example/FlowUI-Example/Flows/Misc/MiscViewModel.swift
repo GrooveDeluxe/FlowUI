@@ -8,6 +8,7 @@ import Foundation
 protocol MiscViewModelProtocol {
     func onEmptyButton()
     func onImageButton()
+    func onSlider(_ value: Float)
 }
 
 struct MiscViewModel: MiscViewModelProtocol {
@@ -17,5 +18,9 @@ struct MiscViewModel: MiscViewModelProtocol {
 
     func onImageButton() {
         print("MiscViewModel: onImageButton called")
+    }
+
+    func onSlider(_ value: Float) {
+        print("MiscViewModel: onSlider - \(value)")
     }
 }
