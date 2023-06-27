@@ -71,7 +71,7 @@ final class ButtonsViewController: UIViewController {
             label(.subtitle, text: "Action with reference type object (unretained)")
             buttonPrimary("Action 7")
                 .addAction(with: self) {
-                    print("ControlsVC: action with object - \($0)")
+                    print("ButtonsVC: action with object - \($0)")
                 }
         }
 
@@ -79,7 +79,7 @@ final class ButtonsViewController: UIViewController {
             label(.subtitle, text: "Action with value type object (for methods consistency)")
             buttonPrimary("Action 8")
                 .addAction(with: viewModel) {
-                    print("ControlsVC: action with object - \($0)")
+                    print("ButtonsVC: action with object - \($0)")
                 }
         }
 
@@ -87,7 +87,7 @@ final class ButtonsViewController: UIViewController {
             label(.subtitle, text: "Action with reference type object and control's value by keyPath")
             buttonPrimary("Action 9")
                 .addAction(keyPath: \.currentTitle, with: self) {
-                    print("ControlsVC: action with object - \($0) and value - \($1 ?? "nil")")
+                    print("ButtonsVC: action with object - \($0) and value - \($1 ?? "nil")")
                 }
         }
 
@@ -96,7 +96,7 @@ final class ButtonsViewController: UIViewController {
                   text: "Action with value type object and control's value by keyPath (for methods consistency)")
             buttonPrimary("Action 10")
                 .addAction(keyPath: \.currentTitle, with: self) {
-                    print("ControlsVC: action with object - \($0) and value - \($1 ?? "nil")")
+                    print("ButtonsVC: action with object - \($0) and value - \($1 ?? "nil")")
                 }
         }
 
@@ -104,15 +104,15 @@ final class ButtonsViewController: UIViewController {
             label(.subtitle, text: "Action with reference type object and sender")
             buttonPrimary("Action 11")
                 .addActionWithSender(with: self) {
-                    print("ControlsVC: action with object - \($0) and sender - \($1)")
+                    print("ButtonsVC: action with object - \($0) and sender - \($1)")
                 }
         }
 
         stack(.vertical, spacing: 8) {
-            label(.subtitle, text: "Action with value type object and sender")
+            label(.subtitle, text: "Action with value type object and sender (for methods consistency)")
             buttonPrimary("Action 12")
                 .addActionWithSender(with: viewModel) {
-                    print("ControlsVC: action with object - \($0) and sender - \($1)")
+                    print("ButtonsVC: action with object - \($0) and sender - \($1)")
                 }
         }
 
@@ -121,7 +121,7 @@ final class ButtonsViewController: UIViewController {
             label(.subtitle, text: "Action with value by keyPath")
             buttonPrimary("Action 13")
                 .addAction(keyPath: \.currentTitle) {
-                    print("ControlsVC: action with value - \($0 ?? "nil")")
+                    print("ButtonsVC: action with value - \($0 ?? "nil")")
                 }
         }
 
@@ -129,7 +129,7 @@ final class ButtonsViewController: UIViewController {
             label(.subtitle, text: "Action with sender")
             buttonPrimary("Action 14")
                 .addActionWithSender {
-                    print("ControlsVC: action with sender - \($0)")
+                    print("ButtonsVC: action with sender - \($0)")
                 }
         }
     }
@@ -166,14 +166,14 @@ private extension ButtonsViewController {
     }
 
     func onButton() {
-        print("ControlsVC: onButton called")
+        print("ButtonsVC: onButton called")
     }
 
     func onButtonWithSender(_ sender: UIButton) {
-        print("ControlsVC: onButtonWithSender(:) called")
+        print("ButtonsVC: onButtonWithSender(:) called")
     }
 
     func onButtonWithValue(_ value: String?) {
-        print("ControlsVC: onButtonWithValue(\"\(value ?? "nil")\") called")
+        print("ButtonsVC: onButtonWithValue(\"\(value ?? "nil")\") called")
     }
 }

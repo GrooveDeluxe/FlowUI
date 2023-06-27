@@ -195,7 +195,7 @@ public extension ActionableControl where Self: UIControl  {
         }
     }
 
-    /// Adding action for event with object and sender (for methods consistency)
+    /// Adding action for event with value type object and sender (for methods consistency)
     @discardableResult
     func addActionWithSender<T>(for event: UIControl.Event = .touchUpInside,
                                 with object: T?,

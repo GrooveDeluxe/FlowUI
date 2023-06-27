@@ -30,6 +30,12 @@
 		4244D3662843A49000FC0BD8 /* UIView+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D34E2843A49000FC0BD8 /* UIView+Constants.swift */; };
 		4244D3672843A49000FC0BD8 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D34F2843A49000FC0BD8 /* UIView+Shadow.swift */; };
 		4244D3682843A49000FC0BD8 /* UIViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3502843A49000FC0BD8 /* UIViewBuilder.swift */; };
+		428AC8E42A499865008C1FCC /* UISwitch+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC8E32A499865008C1FCC /* UISwitch+Convenience.swift */; };
+		428AC8E72A49A472008C1FCC /* UISlider+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC8E62A49A472008C1FCC /* UISlider+Convenience.swift */; };
+		428AC8EA2A49DE05008C1FCC /* UIStepper+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC8E92A49DE05008C1FCC /* UIStepper+Convenience.swift */; };
+		428AC8EE2A4ACA9B008C1FCC /* UIPageControl+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC8ED2A4ACA9B008C1FCC /* UIPageControl+Convenience.swift */; };
+		428AC8F12A4B2411008C1FCC /* UITextField+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC8F02A4B2411008C1FCC /* UITextField+Convenience.swift */; };
+		428AC8F62A4B4AA6008C1FCC /* UIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC8F52A4B4AA6008C1FCC /* UIDatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +67,12 @@
 		4244D37F2843FDB400FC0BD8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4244D3802843FDB400FC0BD8 /* FlowUI.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = FlowUI.podspec; sourceTree = "<group>"; };
 		426E19FB29CCCB81000EB2FC /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		428AC8E32A499865008C1FCC /* UISwitch+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwitch+Convenience.swift"; sourceTree = "<group>"; };
+		428AC8E62A49A472008C1FCC /* UISlider+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISlider+Convenience.swift"; sourceTree = "<group>"; };
+		428AC8E92A49DE05008C1FCC /* UIStepper+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStepper+Convenience.swift"; sourceTree = "<group>"; };
+		428AC8ED2A4ACA9B008C1FCC /* UIPageControl+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl+Convenience.swift"; sourceTree = "<group>"; };
+		428AC8F02A4B2411008C1FCC /* UITextField+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Convenience.swift"; sourceTree = "<group>"; };
+		428AC8F52A4B4AA6008C1FCC /* UIDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePicker.swift; sourceTree = "<group>"; };
 		42C6C186293E86A2000C840B /* DOCUMENTATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DOCUMENTATION.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +143,7 @@
 		4244D3332843A49000FC0BD8 /* UI+Convenience */ = {
 			isa = PBXGroup;
 			children = (
+				428AC8E12A499194008C1FCC /* Controls */,
 				4244D3342843A49000FC0BD8 /* ScrollView */,
 				4244D3362843A49000FC0BD8 /* ImageView */,
 				4244D3382843A49000FC0BD8 /* Constraints */,
@@ -138,8 +151,6 @@
 				4244D33D2843A49000FC0BD8 /* Label */,
 				4244D33F2843A49000FC0BD8 /* Animation */,
 				4244D3412843A49000FC0BD8 /* UIComponents */,
-				429CA30E29F28B8A00CD5F00 /* Control */,
-				4244D3432843A49000FC0BD8 /* Button */,
 				4244D3462843A49000FC0BD8 /* ActivityIndicatorView */,
 				4244D3482843A49000FC0BD8 /* View */,
 				4244D3502843A49000FC0BD8 /* UIViewBuilder.swift */,
@@ -246,12 +257,67 @@
 			name = Metadata;
 			sourceTree = "<group>";
 		};
-		429CA30E29F28B8A00CD5F00 /* Control */ = {
+		428AC8E12A499194008C1FCC /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				4244D3432843A49000FC0BD8 /* Button */,
+				428AC8F42A4B4A88008C1FCC /* DatePicker */,
+				428AC8EB2A4ACA66008C1FCC /* PageControls */,
+				428AC8E52A49A454008C1FCC /* Slider */,
+				428AC8E82A49DDF0008C1FCC /* Stepper */,
+				428AC8E22A499846008C1FCC /* Switch */,
+				428AC8EF2A4B23F5008C1FCC /* TextField */,
 				4244D3442843A49000FC0BD8 /* UIControl+Actions.swift */,
 			);
-			path = Control;
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		428AC8E22A499846008C1FCC /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				428AC8E32A499865008C1FCC /* UISwitch+Convenience.swift */,
+			);
+			path = Switch;
+			sourceTree = "<group>";
+		};
+		428AC8E52A49A454008C1FCC /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				428AC8E62A49A472008C1FCC /* UISlider+Convenience.swift */,
+			);
+			path = Slider;
+			sourceTree = "<group>";
+		};
+		428AC8E82A49DDF0008C1FCC /* Stepper */ = {
+			isa = PBXGroup;
+			children = (
+				428AC8E92A49DE05008C1FCC /* UIStepper+Convenience.swift */,
+			);
+			path = Stepper;
+			sourceTree = "<group>";
+		};
+		428AC8EB2A4ACA66008C1FCC /* PageControls */ = {
+			isa = PBXGroup;
+			children = (
+				428AC8ED2A4ACA9B008C1FCC /* UIPageControl+Convenience.swift */,
+			);
+			path = PageControls;
+			sourceTree = "<group>";
+		};
+		428AC8EF2A4B23F5008C1FCC /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				428AC8F02A4B2411008C1FCC /* UITextField+Convenience.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		428AC8F42A4B4A88008C1FCC /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				428AC8F52A4B4AA6008C1FCC /* UIDatePicker.swift */,
+			);
+			path = DatePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,7 +400,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				428AC8E42A499865008C1FCC /* UISwitch+Convenience.swift in Sources */,
 				4244D3552843A49000FC0BD8 /* UIEdgeInsets+Convenience.swift in Sources */,
+				428AC8F12A4B2411008C1FCC /* UITextField+Convenience.swift in Sources */,
+				428AC8F62A4B4AA6008C1FCC /* UIDatePicker.swift in Sources */,
 				4244D35D2843A49000FC0BD8 /* UIComponents.swift in Sources */,
 				4244D3592843A49000FC0BD8 /* UILayoutPriority+Convenience.swift in Sources */,
 				4244D3562843A49000FC0BD8 /* UIScrollView+Convenience.swift in Sources */,
@@ -342,17 +411,20 @@
 				4244D3602843A49000FC0BD8 /* UIActivityIndicatorView+Convenience.swift in Sources */,
 				4244D3642843A49000FC0BD8 /* UIVIew+Border.swift in Sources */,
 				4244D3672843A49000FC0BD8 /* UIView+Shadow.swift in Sources */,
+				428AC8EA2A49DE05008C1FCC /* UIStepper+Convenience.swift in Sources */,
 				4244D3652843A49000FC0BD8 /* UIView+Convenience.swift in Sources */,
 				4244D3632843A49000FC0BD8 /* UIView+Triangle.swift in Sources */,
 				4244D3542843A49000FC0BD8 /* CGSize+Convenience.swift in Sources */,
 				4244D35F2843A49000FC0BD8 /* UIButton+Convenience.swift in Sources */,
 				4244D3572843A49000FC0BD8 /* UIImage+Convenience.swift in Sources */,
+				428AC8E72A49A472008C1FCC /* UISlider+Convenience.swift in Sources */,
 				4244D3622843A49000FC0BD8 /* UIView+Edges.swift in Sources */,
 				4244D35E2843A49000FC0BD8 /* UIControl+Actions.swift in Sources */,
 				4244D35B2843A49000FC0BD8 /* UILabel+Convenience.swift in Sources */,
 				4244D3532843A49000FC0BD8 /* AssociatedStore.swift in Sources */,
 				4244D3612843A49000FC0BD8 /* UIVIew+GestureRecognizer.swift in Sources */,
 				4244D3682843A49000FC0BD8 /* UIViewBuilder.swift in Sources */,
+				428AC8EE2A4ACA9B008C1FCC /* UIPageControl+Convenience.swift in Sources */,
 				4244D3582843A49000FC0BD8 /* NSLayoutConstraint+Convenience.swift in Sources */,
 				4244D3662843A49000FC0BD8 /* UIView+Constants.swift in Sources */,
 				4244D35A2843A49000FC0BD8 /* UIStackView+Convenience.swift in Sources */,

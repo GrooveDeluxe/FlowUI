@@ -17,6 +17,20 @@ public extension UIImageView {
         }
     }
 
+    convenience init(_ image: UIImage? = nil, size: UIImageView.SizeType = .byImage) {
+        self.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.image = image
+        self.size(size)
+    }
+
+    convenience init(_ image: UIImage? = nil, size: CGSize) {
+        self.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.image = image
+        self.size(size)
+    }
+
     @discardableResult
     func image(_ image: UIImage?) -> Self {
         self.image = image

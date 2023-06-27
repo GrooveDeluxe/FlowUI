@@ -6,7 +6,7 @@
 import UIKit
 import FlowUI
 
-final class ControlsViewController: UIViewController {
+final class ControlsCatalogViewController: UIViewController {
 
     // UI components
 
@@ -15,7 +15,8 @@ final class ControlsViewController: UIViewController {
     // Data source
 
     private var categories: [(name: String, module: UIViewController.Type)] = [
-        (name: "Buttons", module: ButtonsViewController.self)
+        (name: "Buttons", module: ButtonsViewController.self),
+        (name: "Other controls", module: OtherControlsViewController.self)
     ]
 
     // View controller
@@ -28,7 +29,7 @@ final class ControlsViewController: UIViewController {
 }
 
 // MARK: - Private
-private extension ControlsViewController {
+private extension ControlsCatalogViewController {
     func setup() {
         title = "Controls"
 
@@ -43,7 +44,7 @@ private extension ControlsViewController {
 }
 
 // MARK: - UITableViewDataSource -
-extension ControlsViewController: UITableViewDataSource {
+extension ControlsCatalogViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         categories.count
     }
@@ -57,7 +58,7 @@ extension ControlsViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate -
-extension ControlsViewController: UITableViewDelegate {
+extension ControlsCatalogViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let (_, module) = categories[indexPath.row]
         let vc = module.init()

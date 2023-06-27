@@ -17,7 +17,7 @@ final class CatalogViewController: UIViewController {
     private var categories: [(name: String, module: UIViewController.Type)] = [
         (name: "Stacks", module: StacksViewController.self),
         (name: "Images", module: ImagesViewController.self),
-        (name: "Controls", module: ControlsViewController.self),
+        (name: "Controls", module: ControlsCatalogViewController.self),
         (name: "Misc", module: MiscViewController.self)
     ]
 

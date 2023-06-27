@@ -8,10 +8,15 @@ import UIKit
 public protocol UIComponents {}
 
 public extension UIComponents {
+
+    // MARK: Sctoll View
+
     func scrollView(contentInsets: UIEdgeInsets = .zero,
                     contentInsetAdjustmentBehavior: UIScrollView.ContentInsetAdjustmentBehavior = .automatic) -> UIScrollView {
         UIScrollView(contentInsets: contentInsets, contentInsetAdjustmentBehavior: contentInsetAdjustmentBehavior)
     }
+
+    // MARK: Stack
 
     func stack(_ axis: NSLayoutConstraint.Axis,
                spacing: CGFloat = 0,
@@ -26,6 +31,8 @@ public extension UIComponents {
             viewsBuilder: viewsBuilder
         )
     }
+
+    // MARK: Label
 
     func label(_ text: String? = "",
                font: UIFont? = nil,
@@ -45,6 +52,8 @@ public extension UIComponents {
                numberOfLines: Int = 0) -> UILabel {
         UILabel(attributedText: attributedText, numberOfLines: numberOfLines)
     }
+
+    // MARK: Button
 
     func button(_ title: String? = nil,
                 size: CGSize? = nil,
@@ -87,37 +96,33 @@ public extension UIComponents {
             .size(width: size?.width, height: size?.height)
     }
 
+    // MARK: Image View
+
     func imageView(_ image: UIImage? = nil, size: UIImageView.SizeType = .byImage) -> UIImageView {
-        UIImageView(image: image)
-            .translatesAutoresizingMaskIntoConstraints(false)
-            .size(size)
+        UIImageView(image, size: size)
     }
 
     @available(*, deprecated, message: "Use 'imageView(_:size:) and contentMode(_:) instead")
     func imageView(image: UIImage? = nil,
                    contentMode: UIView.ContentMode = .scaleToFill,
                    size: UIImageView.SizeType = .byImage) -> UIImageView {
-        UIImageView(image: image)
-            .translatesAutoresizingMaskIntoConstraints(false)
+        UIImageView(image, size: size)
             .contentMode(contentMode)
-            .size(size)
     }
 
     func imageView(_ image: UIImage? = nil, size: CGSize) -> UIImageView {
-        UIImageView(image: image)
-            .translatesAutoresizingMaskIntoConstraints(false)
-            .size(size)
+        UIImageView(image, size: size)
     }
 
     @available(*, deprecated, message: "Use 'imageView(_:size:) and contentMode(_:) instead")
     func imageView(image: UIImage? = nil,
                    contentMode: UIView.ContentMode = .scaleToFill,
                    size: CGSize) -> UIImageView {
-        UIImageView(image: image)
-            .translatesAutoresizingMaskIntoConstraints(false)
+        UIImageView(image, size: size)
             .contentMode(contentMode)
-            .size(size)
     }
+
+    // MARK: View
 
     func space(width: CGFloat? = nil, height: CGFloat? = nil) -> UIView {
         UIView(color: .clear, width: width, height: height)
@@ -148,12 +153,53 @@ public extension UIComponents {
         return view
     }
 
+    // MARK: Activity Indicator
+
     func activityIndicator(_ style: UIActivityIndicatorView.Style,
                            color: UIColor = .gray,
                            hidesWhenStopped: Bool = true) -> UIActivityIndicatorView {
-        UIActivityIndicatorView(style: style)
-            .translatesAutoresizingMaskIntoConstraints(false)
-            .color(color)
-            .hidesWhenStopped(hidesWhenStopped)
+        UIActivityIndicatorView(style, color: color, hidesWhenStopped: hidesWhenStopped)
+    }
+
+    // MARK: Switcher
+
+    func switcher(isOn: Bool = false) -> UISwitch {
+        UISwitch(isOn: isOn)
+    }
+
+    // MARK: Slider
+
+    func slider(range: ClosedRange<Float>, value: Float = 0.0) -> UISlider {
+        UISlider(range: range, value: value)
+    }
+
+    // MARK: Stepper
+
+    func stepper(range: ClosedRange<Double>, step: Double, value: Double = 0.0) -> UIStepper {
+        UIStepper(range: range, step: step, value: value)
+    }
+
+    // MARK: Page Control
+
+    func pageControl(numberOfPages: Int, currentPage: Int) -> UIPageControl {
+        UIPageControl(numberOfPages: numberOfPages, currentPage: currentPage)
+    }
+
+    // MARK: Text Field
+
+    func textField(_ text: String? = nil, placeholder: String? = nil) -> UITextField {
+        UITextField(text, placeholder: placeholder)
+    }
+
+    func textField(_ string: NSAttributedString?,
+                   defaultTextAttributes: [NSAttributedString.Key : Any] = [:],
+                   attributedPlaceholder: NSAttributedString?,
+                   typingAttributes: [NSAttributedString.Key : Any]? = nil) -> UITextField {
+        UITextField(
+            string,
+            defaultTextAttributes: defaultTextAttributes,
+            attributedPlaceholder: attributedPlaceholder,
+            typingAttributes: typingAttributes
+        )
     }
 }

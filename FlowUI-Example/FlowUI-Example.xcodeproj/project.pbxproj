@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		424260B02A485D4600885547 /* ControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424260AF2A485D4600885547 /* ControlsViewController.swift */; };
+		424260B02A485D4600885547 /* ControlsCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424260AF2A485D4600885547 /* ControlsCatalogViewController.swift */; };
 		424260B22A485DDC00885547 /* ButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424260B12A485DDC00885547 /* ButtonsViewModel.swift */; };
 		424260B52A48B4D500885547 /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424260B42A48B4D500885547 /* ButtonsViewController.swift */; };
 		4244D3162842788D00FC0BD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3152842788D00FC0BD8 /* AppDelegate.swift */; };
@@ -22,6 +22,7 @@
 		4244D3832844043800FC0BD8 /* MiscViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244D3822844043800FC0BD8 /* MiscViewController.swift */; };
 		4249F51229717F700095312E /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249F51129717F700095312E /* ImagesViewController.swift */; };
 		4249F5142971825A0095312E /* UIImage+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249F5132971825A0095312E /* UIImage+Resources.swift */; };
+		428AC8DE2A49726B008C1FCC /* OtherControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC8DD2A49726B008C1FCC /* OtherControlsViewController.swift */; };
 		428C90E12A24AF7700C65EE4 /* MiscViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C90E02A24AF7700C65EE4 /* MiscViewModel.swift */; };
 		42A8C3402939E1AA0054398E /* FlowUI+Adoption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A8C33F2939E1AA0054398E /* FlowUI+Adoption.swift */; };
 /* End PBXBuildFile section */
@@ -41,7 +42,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		424260AF2A485D4600885547 /* ControlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsViewController.swift; sourceTree = "<group>"; };
+		424260AF2A485D4600885547 /* ControlsCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsCatalogViewController.swift; sourceTree = "<group>"; };
 		424260B12A485DDC00885547 /* ButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewModel.swift; sourceTree = "<group>"; };
 		424260B42A48B4D500885547 /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
 		4244D3122842788D00FC0BD8 /* FlowUI-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlowUI-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +58,7 @@
 		4244D3822844043800FC0BD8 /* MiscViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscViewController.swift; sourceTree = "<group>"; };
 		4249F51129717F700095312E /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		4249F5132971825A0095312E /* UIImage+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resources.swift"; sourceTree = "<group>"; };
+		428AC8DD2A49726B008C1FCC /* OtherControlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherControlsViewController.swift; sourceTree = "<group>"; };
 		428C90E02A24AF7700C65EE4 /* MiscViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscViewModel.swift; sourceTree = "<group>"; };
 		42A8C33F2939E1AA0054398E /* FlowUI+Adoption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlowUI+Adoption.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,7 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				424260B32A48B4B900885547 /* Buttons */,
-				424260AF2A485D4600885547 /* ControlsViewController.swift */,
+				428AC8DC2A496F7F008C1FCC /* OtherControls */,
+				424260AF2A485D4600885547 /* ControlsCatalogViewController.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -217,6 +220,14 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		428AC8DC2A496F7F008C1FCC /* OtherControls */ = {
+			isa = PBXGroup;
+			children = (
+				428AC8DD2A49726B008C1FCC /* OtherControlsViewController.swift */,
+			);
+			path = OtherControls;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,9 +304,10 @@
 				4244D3792843AA6400FC0BD8 /* UITableView+Convenience.swift in Sources */,
 				424260B22A485DDC00885547 /* ButtonsViewModel.swift in Sources */,
 				428C90E12A24AF7700C65EE4 /* MiscViewModel.swift in Sources */,
+				428AC8DE2A49726B008C1FCC /* OtherControlsViewController.swift in Sources */,
 				4244D31A2842788D00FC0BD8 /* CatalogViewController.swift in Sources */,
 				4249F51229717F700095312E /* ImagesViewController.swift in Sources */,
-				424260B02A485D4600885547 /* ControlsViewController.swift in Sources */,
+				424260B02A485D4600885547 /* ControlsCatalogViewController.swift in Sources */,
 				4244D3832844043800FC0BD8 /* MiscViewController.swift in Sources */,
 				424260B52A48B4D500885547 /* ButtonsViewController.swift in Sources */,
 				4244D3162842788D00FC0BD8 /* AppDelegate.swift in Sources */,

@@ -14,14 +14,14 @@ protocol ButtonsViewModelProtocol {
 
 struct ButtonsViewModel: ButtonsViewModelProtocol {
     func onButton() {
-        print("ControlsVM: onButton called")
+        print("ButtonsVM: onButton called")
     }
 
     func onButtonWithSender(_ sender: UIButton) {
-        print("ControlsVM: onButtonWithSender(:) called")
+        print("ButtonsVM: onButtonWithSender(:) called")
     }
 
     func onButtonWithValue(_ value: String?) {
-        print("ControlsVM: onButtonWithValue(\"\(value ?? "nil")\") called")
+        print("ButtonsVM: onButtonWithValue(\"\(value ?? "nil")\") called")
     }
 }
