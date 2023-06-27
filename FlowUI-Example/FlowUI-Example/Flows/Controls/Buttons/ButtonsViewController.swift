@@ -24,6 +24,12 @@ final class ButtonsViewController: UIViewController {
 
     private let viewModel: VM? = ButtonsViewModel()
 
+    private var buttonTitle: String? {
+        didSet {
+            print("ButtonsVC: buttonTitle set to (\"\(buttonTitle ?? "nil")\")")
+        }
+    }
+
     // UI components
 
     @UIViewBuilder private var buttons: [UIView] {
@@ -66,10 +72,17 @@ final class ButtonsViewController: UIViewController {
                 .addActionWithSender(on: viewModel, do: VM.onButtonWithSender)
         }
 
+        // MARK: Binding control value by keyPath to object's keyPath
+        stack(.vertical, spacing: 8) {
+            label(.subtitle, text: "Binding control value by keyPath to object's keyPath")
+            buttonPrimary("Action 7")
+                .addAction(keyPath: \.currentTitle, on: self, to: \.buttonTitle)
+        }
+
         // MARK: Actions with object
         stack(.vertical, spacing: 8) {
             label(.subtitle, text: "Action with reference type object (unretained)")
-            buttonPrimary("Action 7")
+            buttonPrimary("Action 8")
                 .addAction(with: self) {
                     print("ButtonsVC: action with object - \($0)")
                 }
@@ -77,7 +90,7 @@ final class ButtonsViewController: UIViewController {
 
         stack(.vertical, spacing: 8) {
             label(.subtitle, text: "Action with value type object (for methods consistency)")
-            buttonPrimary("Action 8")
+            buttonPrimary("Action 9")
                 .addAction(with: viewModel) {
                     print("ButtonsVC: action with object - \($0)")
                 }
@@ -85,7 +98,7 @@ final class ButtonsViewController: UIViewController {
 
         stack(.vertical, spacing: 8) {
             label(.subtitle, text: "Action with reference type object and control's value by keyPath")
-            buttonPrimary("Action 9")
+            buttonPrimary("Action 10")
                 .addAction(keyPath: \.currentTitle, with: self) {
                     print("ButtonsVC: action with object - \($0) and value - \($1 ?? "nil")")
                 }
@@ -94,7 +107,7 @@ final class ButtonsViewController: UIViewController {
         stack(.vertical, spacing: 8) {
             label(.subtitle,
                   text: "Action with value type object and control's value by keyPath (for methods consistency)")
-            buttonPrimary("Action 10")
+            buttonPrimary("Action 11")
                 .addAction(keyPath: \.currentTitle, with: self) {
                     print("ButtonsVC: action with object - \($0) and value - \($1 ?? "nil")")
                 }
@@ -102,7 +115,7 @@ final class ButtonsViewController: UIViewController {
 
         stack(.vertical, spacing: 8) {
             label(.subtitle, text: "Action with reference type object and sender")
-            buttonPrimary("Action 11")
+            buttonPrimary("Action 12")
                 .addActionWithSender(with: self) {
                     print("ButtonsVC: action with object - \($0) and sender - \($1)")
                 }
@@ -110,7 +123,7 @@ final class ButtonsViewController: UIViewController {
 
         stack(.vertical, spacing: 8) {
             label(.subtitle, text: "Action with value type object and sender (for methods consistency)")
-            buttonPrimary("Action 12")
+            buttonPrimary("Action 13")
                 .addActionWithSender(with: viewModel) {
                     print("ButtonsVC: action with object - \($0) and sender - \($1)")
                 }
@@ -119,7 +132,7 @@ final class ButtonsViewController: UIViewController {
         // MARK: Simple actions
         stack(.vertical, spacing: 8) {
             label(.subtitle, text: "Action with value by keyPath")
-            buttonPrimary("Action 13")
+            buttonPrimary("Action 14")
                 .addAction(keyPath: \.currentTitle) {
                     print("ButtonsVC: action with value - \($0 ?? "nil")")
                 }
@@ -127,7 +140,7 @@ final class ButtonsViewController: UIViewController {
 
         stack(.vertical, spacing: 8) {
             label(.subtitle, text: "Action with sender")
-            buttonPrimary("Action 14")
+            buttonPrimary("Action 15")
                 .addActionWithSender {
                     print("ButtonsVC: action with sender - \($0)")
                 }

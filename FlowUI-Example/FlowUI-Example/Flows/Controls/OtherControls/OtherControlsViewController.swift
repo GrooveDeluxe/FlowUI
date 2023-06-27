@@ -38,6 +38,12 @@ final class OtherControlsViewController: UIViewController {
         )
     }()
 
+    private var sliderValue: Float = 0.0 {
+        didSet {
+            print("OtherControlsVC: sliderValue set to (\"\(sliderValue)\")")
+        }
+    }
+
     // UI components
 
     @UIViewBuilder private var controls: [UIView] {
@@ -53,6 +59,13 @@ final class OtherControlsViewController: UIViewController {
             label(.subtitle, text: "Slider")
             slider(range: -10...10)
                 .addAction(for: .valueChanged, keyPath: \.value, on: self, do: VC.onSlider)
+        }
+
+        // MARK: Slider (binding of control value to object property)
+        stack(.vertical, spacing: 8) {
+            label(.subtitle, text: "Slider (binding of control value to object property)")
+            slider(range: -10...10)
+                .addAction(for: .valueChanged, keyPath: \.value, on: self, to: \.sliderValue)
         }
 
         // MARK: Stepper

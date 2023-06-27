@@ -135,6 +135,22 @@ public extension ActionableControl where Self: UIControl  {
     }
 }
 
+// MARK: - Binding of control value by keyPath to object's keyPath -
+
+public extension ActionableControl where Self: UIControl  {
+    /// Binding of control value by keyPath to object's keyPath
+    @discardableResult
+    func addAction<T: AnyObject, V>(for event: UIControl.Event = .touchUpInside,
+                                    keyPath: KeyPath<Self, V>,
+                                    on object: T?,
+                                    to objectKeyPath: WritableKeyPath<T, V>) -> Self {
+        addAction(for: event) { [weak self, weak object] in
+            guard let self, var object else { return }
+            object[keyPath: objectKeyPath] = self[keyPath: keyPath]
+        }
+    }
+}
+
 // MARK:  - Actions with object -
 
 public extension ActionableControl where Self: UIControl  {
