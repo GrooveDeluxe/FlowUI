@@ -44,6 +44,12 @@ final class OtherControlsViewController: UIViewController {
         }
     }
 
+    private var dateValue: Date = Date() {
+        didSet {
+            print("OtherControlsVC: dateValue set to (\"\(dateValue)\")")
+        }
+    }
+
     // UI components
 
     @UIViewBuilder private var controls: [UIView] {
@@ -121,8 +127,8 @@ final class OtherControlsViewController: UIViewController {
         // MARK: DatePicker
         stack(.vertical, spacing: 8) {
             label(.subtitle, text: "Date Picker")
-            UIDatePicker(mode: .date)
-                .addAction(for: .valueChanged, keyPath: \.date, on: self, do: VC.onDatePicker)
+            datePicker(mode: .dateAndTime, in: ...Date())
+                .addAction(for: .valueChanged, keyPath: \.date, on: self, to: \.dateValue)
         }
     }
 

@@ -202,4 +202,24 @@ public extension UIComponents {
             typingAttributes: typingAttributes
         )
     }
+
+    // MARK: Date Picker
+
+    func datePicker(mode: UIDatePicker.Mode = .dateAndTime,
+                    date: Date = Date(),
+                    in range: ClosedRange<Date>? = nil) -> UIDatePicker {
+        UIDatePicker(mode: mode, date: date, in: range)
+    }
+
+    func datePicker(mode: UIDatePicker.Mode = .dateAndTime,
+                    date: Date = Date(),
+                    in range: PartialRangeFrom<Date>? = nil) -> UIDatePicker {
+        UIDatePicker(mode: mode, date: date, in: range)
+    }
+
+    func datePicker(mode: UIDatePicker.Mode = .dateAndTime,
+                    date: Date = Date(),
+                    in range: PartialRangeThrough<Date>? = nil) -> UIDatePicker {
+        UIDatePicker(mode: mode, date: date, in: range)
+    }
 }

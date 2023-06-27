@@ -8,15 +8,33 @@ import UIKit
 public extension UIDatePicker {
     convenience init(mode: UIDatePicker.Mode = .dateAndTime,
                      date: Date = Date(),
-                     minimumDate: Date? = nil,
-                     maximumDate: Date? = nil) {
+                     in range: ClosedRange<Date>? = nil) {
         self.init()
         self.translatesAutoresizingMaskIntoConstraints = false
         self.datePickerMode = mode
         self.date = date
-        self.minimumDate = minimumDate
-        self.maximumDate = maximumDate
+        self.minimumDate = range?.lowerBound
+        self.maximumDate = range?.upperBound
+    }
 
+    convenience init(mode: UIDatePicker.Mode = .dateAndTime,
+                     date: Date = Date(),
+                     in range: PartialRangeFrom<Date>? = nil) {
+        self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.datePickerMode = mode
+        self.date = date
+        self.minimumDate = range?.lowerBound
+    }
+
+    convenience init(mode: UIDatePicker.Mode = .dateAndTime,
+                     date: Date = Date(),
+                     in range: PartialRangeThrough<Date>? = nil) {
+        self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.datePickerMode = mode
+        self.date = date
+        self.maximumDate = range?.upperBound
     }
 
     @discardableResult
