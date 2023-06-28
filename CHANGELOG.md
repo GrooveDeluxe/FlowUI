@@ -1,3 +1,11 @@
+# 0.2.4
+
+## Changes:
+
+* UIControl action methods reworked and extended. A lots of variety types of actions and bindings added.
+* Added convenience initilizers and chainable methods for UISwitch, UISlider, UIStepper, UIPageControl, UITextField and UIDatePicker
+* Added constructors to UIComponents for all supported controls
+
 # 0.2.3
 
 ## Changes:
