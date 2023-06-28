@@ -124,6 +124,13 @@ final class OtherControlsViewController: UIViewController {
                 .addActionWithSender(for: .editingChanged, on: self, do: VC.onTextFieldWithSender)
         }
 
+        // MARK: TextFiled (other)
+        stack(.vertical, spacing: 8) {
+            label(.subtitle, text: "Text Field (other)")
+            textField(defaultTextAttributes: textFieldTextAttributes)
+                .addActionWithSender(for: .editingChanged, on: self, do: VC.onTextFieldWithSender)
+        }
+
         // MARK: DatePicker
         stack(.vertical, spacing: 8) {
             label(.subtitle, text: "Date Picker")

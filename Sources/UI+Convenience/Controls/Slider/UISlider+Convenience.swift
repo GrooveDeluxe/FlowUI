@@ -8,9 +8,9 @@ import UIKit
 public extension UISlider {
     convenience init(range: ClosedRange<Float>, value: Float = 0.0) {
         self.init()
-        translatesAutoresizingMaskIntoConstraints = false
-        minimumValue = range.lowerBound
-        maximumValue = range.upperBound
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.minimumValue = range.lowerBound
+        self.maximumValue = range.upperBound
         self.value = value
     }
 

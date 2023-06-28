@@ -6,7 +6,7 @@
 import UIKit
 
 public extension UIStepper {
-    convenience init(range: ClosedRange<Double>, step: Double, value: Double) {
+    convenience init(range: ClosedRange<Double>, step: Double = 1.0, value: Double = 0.0) {
         self.init()
         self.translatesAutoresizingMaskIntoConstraints = false
         self.minimumValue = range.lowerBound

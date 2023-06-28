@@ -175,13 +175,13 @@ public extension UIComponents {
 
     // MARK: Stepper
 
-    func stepper(range: ClosedRange<Double>, step: Double, value: Double = 0.0) -> UIStepper {
+    func stepper(range: ClosedRange<Double>, step: Double = 1.0, value: Double = 0.0) -> UIStepper {
         UIStepper(range: range, step: step, value: value)
     }
 
     // MARK: Page Control
 
-    func pageControl(numberOfPages: Int, currentPage: Int) -> UIPageControl {
+    func pageControl(numberOfPages: Int, currentPage: Int = 0) -> UIPageControl {
         UIPageControl(numberOfPages: numberOfPages, currentPage: currentPage)
     }
 
@@ -191,9 +191,9 @@ public extension UIComponents {
         UITextField(text, placeholder: placeholder)
     }
 
-    func textField(_ string: NSAttributedString?,
+    func textField(_ string: NSAttributedString? = nil,
                    defaultTextAttributes: [NSAttributedString.Key : Any] = [:],
-                   attributedPlaceholder: NSAttributedString?,
+                   attributedPlaceholder: NSAttributedString? = nil,
                    typingAttributes: [NSAttributedString.Key : Any]? = nil) -> UITextField {
         UITextField(
             string,

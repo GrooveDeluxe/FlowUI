@@ -6,7 +6,7 @@
 import UIKit
 
 public extension UIPageControl {
-    convenience init(numberOfPages: Int, currentPage: Int) {
+    convenience init(numberOfPages: Int, currentPage: Int = 0) {
         self.init()
         self.translatesAutoresizingMaskIntoConstraints = false
         self.numberOfPages = numberOfPages
