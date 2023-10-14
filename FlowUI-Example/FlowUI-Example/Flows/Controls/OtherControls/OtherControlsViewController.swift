@@ -164,7 +164,7 @@ private extension OtherControlsViewController {
     func setup() {
         title = "Other controls"
 
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
 
         scrollView.keyboardDismissMode = .onDrag
 

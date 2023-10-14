@@ -75,7 +75,7 @@ private extension StacksViewController {
     func setup() {
         title = "Stacks"
 
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
 
         scrollView.addSubview(stackView, insets: .symmetry(h: 16, v: 0))
         view.addSubview(scrollView, insets: .zero)

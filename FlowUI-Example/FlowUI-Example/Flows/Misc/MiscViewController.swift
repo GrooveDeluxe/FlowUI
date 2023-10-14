@@ -7,10 +7,10 @@ import UIKit
 import FlowUI
 
 extension UILabel {
-    static var h1: UILabel { .init(font: .systemFont(ofSize: 40, weight: .bold), textColor: .black) }
-    static var h2: UILabel { .init(font: .systemFont(ofSize: 30, weight: .bold), textColor: .black) }
-    static var h3: UILabel { .init(font: .systemFont(ofSize: 20, weight: .bold), textColor: .black) }
-    static var subtitle: UILabel { .init(font: .systemFont(ofSize: 17, weight: .semibold), textColor: .darkGray) }
+    static var h1: UILabel { .init(font: .systemFont(ofSize: 40, weight: .bold), textColor: .systemFill) }
+    static var h2: UILabel { .init(font: .systemFont(ofSize: 30, weight: .bold), textColor: .systemFill) }
+    static var h3: UILabel { .init(font: .systemFont(ofSize: 20, weight: .bold), textColor: .systemFill) }
+    static var subtitle: UILabel { .init(font: .systemFont(ofSize: 17, weight: .semibold), textColor: .systemGray) }
 }
 
 extension UIComponents {
@@ -82,7 +82,7 @@ class MiscViewController: UIViewController {
             .isUserInteractionEnabled(true)
             .configure { [weak self] in
                 print("label - \(type(of: $0))")
-                let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(labelLongPress))
+                let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(self?.labelLongPress))
                 $0.addGestureRecognizer(recognizer)
             }
 
@@ -92,13 +92,13 @@ class MiscViewController: UIViewController {
             .backgroundColor(.orange)
             .cornerRadius(8)
             .size(height: 40)
-            .addTouchUpInside {
+            .addAction {
                 print("Attributed button tapped")
             }
             .configure { [weak self] in
                 print("button - \(type(of: $0))")
                 self?.attributedButton = $0
-                $0.addTarget(self, action: #selector(buttonTouchUpOutside), for: .touchUpOutside)
+                $0.addTarget(self, action: #selector(self?.buttonTouchUpOutside), for: .touchUpOutside)
             }
 
         space(height: 32)
@@ -215,7 +215,7 @@ private extension MiscViewController {
     func setup() {
         title = "Misc"
 
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
 
         scrollView.addSubview(stack, insets: .symmetry(h: 16, v: 0))
         view.addSubview(scrollView, insets: .zero)

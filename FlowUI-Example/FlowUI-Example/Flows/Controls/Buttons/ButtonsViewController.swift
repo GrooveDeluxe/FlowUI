@@ -171,7 +171,7 @@ private extension ButtonsViewController {
     func setup() {
         title = "Buttons"
 
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
 
         scrollView.addSubview(stack, insets: .symmetry(h: 16, v: 32))
         view.addSubview(scrollView, insets: .zero)

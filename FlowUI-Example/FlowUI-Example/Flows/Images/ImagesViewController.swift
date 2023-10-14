@@ -47,7 +47,7 @@ private extension ImagesViewController {
     func setup() {
         title = "Images"
 
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
 
         scrollView.addSubview(stack, insets: .symmetry(h: 16, v: 0))
         view.addSubview(scrollView, insets: .zero)
