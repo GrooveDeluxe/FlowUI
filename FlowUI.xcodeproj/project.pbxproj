@@ -67,6 +67,7 @@
 		4244D37F2843FDB400FC0BD8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4244D3802843FDB400FC0BD8 /* FlowUI.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = FlowUI.podspec; sourceTree = "<group>"; };
 		426E19FB29CCCB81000EB2FC /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		4285027B2AEEAE2800D1466F /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		428AC8E32A499865008C1FCC /* UISwitch+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwitch+Convenience.swift"; sourceTree = "<group>"; };
 		428AC8E62A49A472008C1FCC /* UISlider+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISlider+Convenience.swift"; sourceTree = "<group>"; };
 		428AC8E92A49DE05008C1FCC /* UIStepper+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStepper+Convenience.swift"; sourceTree = "<group>"; };
@@ -248,6 +249,7 @@
 		4244D37D2843FD9700FC0BD8 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				4285027B2AEEAE2800D1466F /* Package.swift */,
 				4244D3802843FDB400FC0BD8 /* FlowUI.podspec */,
 				4244D37E2843FDB400FC0BD8 /* LICENSE */,
 				4244D37F2843FDB400FC0BD8 /* README.md */,
