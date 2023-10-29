@@ -1,3 +1,11 @@
+# 0.2.5
+
+## Changes:
+
+* UIControl documentation added
+* Example's dark theme fixed
+* SPM support added
+
 # 0.2.4
 
 ## Changes:
